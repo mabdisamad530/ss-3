@@ -161,8 +161,10 @@ module.exports = async function handler(req, res) {
       payment_method_types: ['card'],
       mode: 'payment',
       customer_email: email,
+      customer_creation: 'always',
       line_items: lineItems,
       allow_promotion_codes: true,
+      automatic_tax: { enabled: true },
 
       // ── Metadata kept 100% identical to original ─────────────────────────
       // Webhook reads ONLY from here — do not change field names.
