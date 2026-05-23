@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Your Mat – Sajda Studio</title>
+<meta name="description" content="Design your personalised embroidered memory foam prayer mat. Choose colour, add a name, select a symbol — ships worldwide in a luxury gift box.">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital@0;1&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<script>
+  // Set your Google Maps API key as GOOGLE_MAPS_API_KEY in Vercel environment variables.
+  // Vercel does NOT inject env vars into static HTML automatically — you have two options:
+  // Option A (recommended): Add it directly below: var GOOGLE_MAPS_KEY = 'AIza...your key...';
+  // Option B: Use a serverless function to inject it at runtime.
+  var GOOGLE_MAPS_KEY = ''; // <-- paste your key here, or leave empty to disable autocomplete
+</script>
+<style>
+/* ── TOKENS ── */
+:root {
+  --ivory:      #F4EFE6;
+  --warm-white: #FAF6EE;
+  --sand:       #E5DBC8;
+  --sand-2:     #D8CBB1;
+  --gold:       #B8924A;
+  --gold-deep:  #8E6B2E;
+  --gold-soft:  #D4B26E;
+  --ink:        #2A241D;
+  --ink-soft:   #5A4F42;
+  --muted:      #8A7E6A;
+  --line:       rgba(184,146,74,.28);
+  --line-soft:  rgba(42,36,29,.09);
+  --green:      #5aA060;
+  --error:      #c94040;
+  --step-h:     84px; /* height of sticky step bar */
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--warm-white);color:var(--ink);
+  font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.7;font-weight:300;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none;}
+
+/* ── ANNOUNCE ── */
+.announce{background:var(--ink);text-align:center;padding:.65rem 1rem;}
+.announce-t{font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-soft);}
+.announce-t span{color:var(--sand);}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:200;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  padding:1.1rem 5vw;
+  background:rgba(250,246,238,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line-soft);
+}
+.nav-links{list-style:none;display:flex;gap:2.2rem;align-items:center;}
+.nav-links a{font-family:'Cinzel',serif;font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);padding:.35rem 0;border-bottom:1px solid transparent;transition:all .22s;}
+.nav-links a:hover{color:var(--gold-deep);border-bottom-color:var(--gold);}
+.nav-logo{text-align:center;display:flex;flex-direction:column;align-items:center;gap:.1rem;}
+.nav-logo .mark{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:1.5rem;color:var(--ink);line-height:1;}
+.nav-logo .mark em{color:var(--gold-deep);}
+.nav-logo .ar{font-family:'Amiri',serif;font-size:.68rem;color:var(--gold);opacity:.8;margin-top:.1rem;}
+.nav-right{display:flex;justify-content:flex-end;align-items:center;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.3rem;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mob-menu{display:none;flex-direction:column;background:var(--warm-white);border-bottom:1px solid var(--line-soft);padding:1.2rem 5vw 1.5rem;gap:0;}
+.mob-menu.open{display:flex;}
+.mob-menu a{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);padding:.65rem 0;border-bottom:1px solid var(--line-soft);transition:color .2s;}
+.mob-menu a:hover{color:var(--gold-deep);}
+
+/* ── PAGE HERO ── */
+.pg-hero{
+  background:var(--ivory);
+  border-bottom:1px solid var(--line);
+  padding:3.5rem 5vw 3rem;
+  text-align:center;
+}
+.pg-hero .eyebrow{font-family:'Cinzel',serif;font-size:.56rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep);display:inline-flex;align-items:center;gap:.7rem;margin-bottom:1rem;}
+.pg-hero .eyebrow .rule{width:28px;height:1px;background:var(--gold);}
+.pg-hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.4rem,5vw,4rem);line-height:1.04;color:var(--ink);margin-bottom:.7rem;}
+.pg-hero h1 em{font-style:italic;color:var(--gold-deep);}
+.pg-hero p{color:var(--ink-soft);font-size:1.05rem;max-width:42ch;margin:0 auto;}
+
+/* ── STEP PROGRESS BAR ── */
+.step-bar{
+  position:sticky;top:64px;z-index:100;
+  background:var(--sand);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  padding:1.1rem 5vw;gap:0;
+}
+.step-item{display:flex;align-items:center;gap:.7rem;flex:1;max-width:200px;}
+.step-item:last-child{flex:0;}
+.step-num{
+  width:32px;height:32px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cinzel',serif;font-size:.58rem;font-weight:600;letter-spacing:.05em;
+  border:1.5px solid var(--gold);color:var(--gold);background:transparent;
+  transition:all .3s;
+}
+.step-item.active .step-num{background:var(--ink);color:var(--warm-white);border-color:var(--ink);}
+.step-item.done .step-num{background:var(--gold);color:var(--warm-white);border-color:var(--gold);}
+.step-lbl{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500;transition:color .3s;}
+.step-item.active .step-lbl{color:var(--ink);}
+.step-item.done .step-lbl{color:var(--gold-deep);}
+.step-connector{flex:1;height:1px;background:var(--line);margin:0 .8rem;}
+
+/* ── MAIN LAYOUT ── */
+.page-body{
+  max-width:1240px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:calc(100vh - 200px);
+}
+
+/* ── LEFT PANEL — photo + colour picker ── */
+.panel-left{
+  position:sticky;top:calc(64px + var(--step-h));
+  height:calc(100vh - 64px - var(--step-h));
+  overflow:hidden;
+  background:var(--ivory);
+  border-right:1px solid var(--line);
+  display:flex;flex-direction:column;
+}
+.mat-photo-wrap{
+  flex:1;overflow:hidden;position:relative;
+}
+.mat-photo-wrap img{
+  width:100%;height:100%;object-fit:cover;
+  transition:opacity .3s ease;
+  display:block;
+}
+.mat-photo-wrap::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:120px;
+  background:linear-gradient(to top,var(--ivory),transparent);
+  pointer-events:none;
+}
+.colour-dock{
+  background:var(--ivory);padding:1.4rem 1.8rem;
+  border-top:1px solid var(--line-soft);
+}
+.colour-dock-label{
+  font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:.9rem;font-weight:600;
+}
+.colour-selected-name{
+  font-family:'Cormorant Garamond',serif;font-size:1.1rem;
+  color:var(--ink);margin-bottom:.8rem;font-weight:400;font-style:italic;
+  min-height:1.4em;transition:opacity .2s;
+}
+.sw-row{display:flex;gap:.7rem;flex-wrap:wrap;}
+.sw{
+  width:30px;height:30px;border-radius:50%;cursor:pointer;
+  border:2px solid transparent;
+  transition:transform .2s,border-color .2s,box-shadow .2s;
+  box-shadow:0 2px 6px rgba(0,0,0,.14);
+}
+.sw:hover{transform:scale(1.2);}
+.sw.on{transform:scale(1.25);border-color:var(--gold-deep);box-shadow:0 0 0 3px rgba(142,107,46,.18);}
+
+/* ── RIGHT PANEL — the form ── */
+.panel-right{
+  background:var(--warm-white);
+  padding:3rem 4vw 4rem;
+}
+
+/* step panels */
+.ostep{display:none;}
+.ostep.active{display:block;animation:fadeUp .35s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+
+.step-title{
+  font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;
+  color:var(--ink);margin-bottom:.4rem;line-height:1.1;
+}
+.step-title em{font-style:italic;color:var(--gold-deep);}
+.step-sub{font-size:.93rem;color:var(--muted);margin-bottom:2.2rem;font-weight:300;}
+
+/* fields */
+.ofield{margin-bottom:1.5rem;}
+.ofield label{
+  display:block;font-family:'Cinzel',serif;font-size:.54rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);
+  margin-bottom:.5rem;font-weight:600;
+}
+.ofield label .opt{font-family:'Crimson Pro',serif;font-size:.82rem;text-transform:none;letter-spacing:0;color:var(--muted);font-weight:300;margin-left:.3rem;}
+.oinput,.oselect,.otextarea{
+  width:100%;background:var(--ivory);
+  border:1px solid var(--line);color:var(--ink);
+  font-family:'Crimson Pro',serif;font-size:1rem;
+  padding:.82rem 1rem;outline:none;
+  transition:border-color .25s,box-shadow .25s;
+  -webkit-appearance:none;border-radius:0;
+}
+.oinput:focus,.oselect:focus,.otextarea:focus{
+  border-color:var(--gold-deep);
+  box-shadow:0 0 0 3px rgba(142,107,46,.09);
+}
+.oinput::placeholder,.otextarea::placeholder{color:var(--muted);font-weight:300;}
+.oselect{
+  cursor:pointer;
+  background-image:url("data:image/svg+xml;utf8,<svg fill='%23B8924A' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat:no-repeat;background-position:98% 50%;padding-right:2.4rem;
+}
+.otextarea{height:80px;resize:vertical;}
+.ofield-hint{font-size:.78rem;color:var(--muted);margin-top:.3rem;font-weight:300;font-style:italic;}
+.orow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+
+/* symbol picker */
+.symbol-opts{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.5rem;}
+.sym-btn{
+  display:flex;flex-direction:column;align-items:center;gap:.35rem;
+  cursor:pointer;padding:.8rem 1.1rem;
+  border:1px solid var(--line);background:var(--ivory);
+  transition:all .22s;min-width:80px;
+}
+.sym-btn:hover{border-color:var(--gold-deep);}
+.sym-btn.picked{border-color:var(--gold-deep);background:rgba(184,146,74,.08);}
+.sym-icon{font-size:1.4rem;line-height:1;color:var(--ink-soft);}
+.sym-btn.picked .sym-icon{color:var(--gold-deep);}
+.sym-lbl{font-family:'Cinzel',serif;font-size:.44rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;font-weight:600;}
+.sym-btn.picked .sym-lbl{color:var(--gold-deep);}
+
+/* summary */
+.osummary{
+  background:var(--ivory);border:1px solid var(--line);
+  padding:1.5rem;margin-bottom:2rem;
+}
+.osummary h4{
+  font-family:'Cinzel',serif;font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-soft);margin-bottom:1.1rem;font-weight:600;
+}
+.osum-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:.38rem 0;border-bottom:1px solid var(--line-soft);
+}
+.osum-row:last-child{border-bottom:none;}
+.osum-lbl{font-size:.9rem;color:var(--ink-soft);font-weight:300;}
+.osum-val{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--ink);}
+.osum-total{color:var(--gold-deep);font-size:1.5rem;}
+
+/* notice box */
+.notice{
+  background:rgba(184,146,74,.06);border:1px solid var(--line);
+  padding:1rem 1.1rem;font-size:.83rem;color:var(--ink-soft);
+  line-height:1.72;margin-bottom:1.5rem;font-weight:300;
+}
+
+/* nav buttons */
+.form-foot{
+  display:flex;gap:.8rem;justify-content:space-between;
+  align-items:center;padding-top:1.5rem;
+  border-top:1px solid var(--line-soft);margin-top:2rem;
+}
+.obtn{
+  font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.18em;
+  text-transform:uppercase;padding:.9rem 2rem;border:none;cursor:pointer;
+  transition:all .25s;font-weight:600;white-space:nowrap;
+}
+.obtn-prev{background:transparent;color:var(--ink-soft);border:1px solid var(--line);}
+.obtn-prev:hover{border-color:var(--gold-deep);color:var(--gold-deep);}
+.obtn-next,.obtn-submit{background:var(--ink);color:var(--warm-white);flex:1;max-width:260px;}
+.obtn-next:hover,.obtn-submit:hover{background:var(--gold-deep);}
+.obtn-next:disabled,.obtn-submit:disabled{opacity:.45;cursor:not-allowed;}
+
+/* error */
+#oCheckoutErr{
+  display:none;margin-top:1rem;padding:.8rem 1rem;
+  font-size:.85rem;color:var(--error);
+  background:rgba(201,64,64,.06);border:1px solid rgba(201,64,64,.2);
+  line-height:1.6;
+}
+
+/* success screen */
+#oConfirm{
+  display:none;flex-direction:column;align-items:center;
+  text-align:center;padding:4rem 2rem;
+  animation:fadeUp .5s ease both;
+}
+#oConfirm h3{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;color:var(--ink);margin-bottom:.75rem;line-height:1.05;}
+#oConfirm h3 em{font-style:italic;color:var(--gold-deep);}
+#oConfirm p{font-size:1rem;color:var(--ink-soft);font-weight:300;line-height:1.82;max-width:360px;margin-bottom:1.5rem;}
+.oconf-ref{
+  font-family:'Cinzel',serif;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-deep);background:rgba(184,146,74,.08);
+  border:1px solid var(--line);padding:.85rem 1.5rem;font-weight:600;
+}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ivory);border-top:1px solid var(--line);
+  padding:3rem 5vw 2rem;
+}
+.foot-in{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;}
+.foot-brand .logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5rem;color:var(--ink);}
+.foot-brand .logo em{color:var(--gold-deep);}
+.foot-brand .ar{font-family:'Amiri',serif;font-size:.82rem;color:var(--gold);opacity:.8;}
+.foot-links{display:flex;gap:2rem;flex-wrap:wrap;font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);}
+.foot-links a:hover{color:var(--gold-deep);}
+.foot-bottom{max-width:1200px;margin:2.5rem auto 0;padding-top:1.4rem;border-top:1px solid var(--line-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-family:'Cinzel',serif;font-size:.48rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .page-body{grid-template-columns:1fr;}
+  .panel-left{position:static;height:auto;}
+  .mat-photo-wrap{height:52vw;min-height:240px;max-height:360px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .step-lbl{display:none;}
+  .step-connector{margin:0 .4rem;}
+  .panel-right{padding:2rem 5vw 3rem;}
+}
+@media(max-width:540px){
+  .orow{grid-template-columns:1fr;}
+  .pg-hero{padding:2.5rem 5vw 2rem;}
+  .obtn{padding:.8rem 1.2rem;font-size:.52rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE -->
+<div class="announce">
+  <div class="announce-t">&#x2728; Code <strong>SAJDA10</strong> for 10% off <span>&middot;</span> Free gift box &middot; Worldwide shipping &#x2728;</div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <ul class="nav-links">
+    <li><a href="index.html#collections">Collections</a></li>
+    <li><a href="index.html#bundles">Sets &amp; Bundles</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#faq">Info</a></li>
+  </ul>
+  <a href="index.html" class="nav-logo">
+    <span class="mark">Sajda <em>Studio</em></span>
+    <span class="ar">سجدة</span>
+  </a>
+  <div class="nav-right">
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <a href="index.html#collections" onclick="closeMenu()">Collections</a>
+  <a href="index.html#bundles" onclick="closeMenu()">Sets &amp; Bundles</a>
+  <a href="index.html#about" onclick="closeMenu()">About</a>
+  <a href="index.html#faq" onclick="closeMenu()">Info</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="pg-hero">
+  <div class="eyebrow"><span class="rule"></span>Personalised to Order<span class="rule"></span></div>
+  <h1>Design Your <em>Sacred Space</em></h1>
+  <p>Choose your colour, add a name, select a symbol. Ships worldwide in a luxury gift box within 2–3 weeks.</p>
+</div>
+
+<!-- STEP PROGRESS BAR -->
+<div class="step-bar" id="stepBar">
+  <div class="step-item active" id="si1">
+    <div class="step-num">1</div>
+    <span class="step-lbl">Product &amp; Colour</span>
+  </div>
+  <div class="step-connector"></div>
+  <div class="step-item" id="si2">
+    <div class="step-num">2</div>
+    <span class="step-lbl">Personalisation</span>
+  </div>
+  <div class="step-connector"></div>
+  <div class="step-item" id="si3">
+    <div class="step-num">3</div>
+    <span class="step-lbl">Your Details</span>
+  </div>
+</div>
+
+<!-- MAIN TWO-COLUMN LAYOUT -->
+<div class="page-body">
+
+  <!-- LEFT: photo preview + colour dock -->
+  <div class="panel-left">
+    <div class="mat-photo-wrap">
+      <img id="matPhoto" src="/box-black.jpeg" alt="Selected prayer mat colour" />
+    </div>
+    <div class="colour-dock">
+      <div class="colour-dock-label">Select Colour</div>
+      <div class="colour-selected-name" id="colourName">Black</div>
+      <div class="sw-row">
+        <div class="sw on"  data-val="Black"        data-photo="/box-black.jpeg"        style="background:radial-gradient(circle at 35% 35%,#2a2a2a,#080808);"  onclick="pickColour(this)" title="Black"></div>
+        <div class="sw"     data-val="Grey-Purple"  data-photo="/box-grey-purple.jpeg"  style="background:radial-gradient(circle at 35% 35%,#8a7a98,#3a2a48);"  onclick="pickColour(this)" title="Grey-Purple"></div>
+        <div class="sw"     data-val="Pink"          data-photo="/box-pink.jpeg"          style="background:radial-gradient(circle at 35% 35%,#c47a8a,#7a3a48);"  onclick="pickColour(this)" title="Pink"></div>
+        <div class="sw"     data-val="Deyal Purple"  data-photo="/box-deyal-purple.jpeg"  style="background:radial-gradient(circle at 35% 35%,#7030a0,#3a0060);"  onclick="pickColour(this)" title="Deyal Purple"></div>
+        <div class="sw"     data-val="Royal Blue"    data-photo="/box-royal-blue.jpeg"    style="background:radial-gradient(circle at 35% 35%,#1a3a8a,#0a1a50);"  onclick="pickColour(this)" title="Royal Blue"></div>
+        <div class="sw"     data-val="Burgundy"      data-photo="/box-burgundy.jpeg"      style="background:radial-gradient(circle at 35% 35%,#8a1a1a,#500808);"  onclick="pickColour(this)" title="Burgundy"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: form -->
+  <div class="panel-right">
+    <div id="oFormInner">
+
+      <!-- STEP 1 -->
+      <div class="ostep active" id="ostep1">
+        <div class="step-title">Choose your <em>product</em></div>
+        <p class="step-sub">Select the mat bundle that fits your order, then pick your colour on the left.</p>
+
+        <div class="ofield">
+          <label>Product</label>
+          <select class="oselect" id="oBundle">
+            <option value="">&#8212; Select a product &#8212;</option>
+            <optgroup label="Single Mats">
+              <option value="single">Single Personalised Mat &mdash; $35</option>
+            </optgroup>
+            <optgroup label="Sets &amp; Bundles">
+              <option value="duo">Duo Set (2 Mats) &mdash; $60</option>
+              <option value="family">Family Set (4 Mats) &mdash; $110</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="ofield">
+          <label>Occasion <span class="opt">(optional)</span></label>
+          <select class="oselect" id="oOccasion">
+            <option value="">&#8212; Select occasion &#8212;</option>
+            <option>Eid Gift</option>
+            <option>Nikah / Wedding</option>
+            <option>Ramadan Gift</option>
+            <option>New Baby / Aqiqah</option>
+            <option>Hajj / Umrah</option>
+            <option>Birthday</option>
+            <option>Personal Use</option>
+          </select>
+        </div>
+
+        <!-- Pricing note -->
+        <div class="notice">
+          &#9632;&ensp;Single mat from <strong>$35</strong> &middot; Duo Set $60 &middot; Family Set (4) $110 &middot; +$7 name embroidery &middot; +$3 symbol &middot; +$5 tasbih add-on &middot; Free luxury gift box.
+        </div>
+
+        <div class="form-foot">
+          <span></span>
+          <button type="button" class="obtn obtn-next" id="oNext1" onclick="nextStep()">Next &rarr;</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="ostep" id="ostep2">
+        <div class="step-title">Add your <em>personalisation</em></div>
+        <p class="step-sub">Leave any field blank to skip that option — all add-ons are optional.</p>
+
+        <div id="nameFields">
+          <!-- dynamically populated -->
+        </div>
+
+        <div class="ofield">
+          <label>Add a Symbol <span class="opt">(+$3 per mat, optional)</span></label>
+          <div id="symbolRows"></div>
+        </div>
+
+        <div class="ofield">
+          <label>Thread Colour</label>
+          <select class="oselect" id="oThread">
+            <option>Gold</option>
+            <option>White</option>
+            <option>Black</option>
+          </select>
+          <div class="ofield-hint">Gold catches light beautifully on dark mats &middot; White and Black suit lighter colours</div>
+        </div>
+
+        <div class="ofield">
+          <label>Add a Tasbih <span class="opt">(+$5, colour-matched to your mat)</span></label>
+          <label style="display:flex;align-items:center;gap:.8rem;cursor:pointer;font-family:'Crimson Pro',serif;font-size:1rem;color:var(--ink);text-transform:none;letter-spacing:0;font-weight:300;margin-top:.5rem;">
+            <input type="checkbox" id="oTasbih" style="width:18px;height:18px;accent-color:var(--gold-deep);cursor:pointer;flex-shrink:0;" />
+            Yes, add a colour-matched tasbih (+$5)
+          </label>
+          <div class="ofield-hint">Handcrafted tasbih in the same colour as your mat &middot; Ships in the same gift box</div>
+        </div>
+
+        <div class="form-foot">
+          <button type="button" class="obtn obtn-prev" onclick="prevStep()">&larr; Back</button>
+          <button type="button" class="obtn obtn-next" onclick="nextStep()">Next &rarr;</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="ostep" id="ostep3">
+        <div class="step-title">Your <em>details</em></div>
+        <p class="step-sub">Review your order below, then enter your shipping details to pay.</p>
+
+        <!-- Summary -->
+        <div class="osummary" id="oSummary">
+          <h4>Order Summary</h4>
+          <div class="osum-row"><span class="osum-lbl">Product</span><span class="osum-val" id="sProduct">&#8212;</span></div>
+          <div class="osum-row"><span class="osum-lbl">Colour</span><span class="osum-val" id="sColor">&#8212;</span></div>
+          <div class="osum-row"><span class="osum-lbl">Names</span><span class="osum-val" id="sNames">&#8212;</span></div>
+          <div class="osum-row"><span class="osum-lbl">Name embroidery</span><span class="osum-val" id="sPersonal">&#8212;</span></div>
+          <div class="osum-row" id="sSymbolRow" style="display:none;"><span class="osum-lbl">Symbols</span><span class="osum-val" id="sSymbol">&#8212;</span></div>
+          <div class="osum-row" id="sTasbihRow" style="display:none;"><span class="osum-lbl">Tasbih Add-on</span><span class="osum-val" id="sTasbih">+$5.00</span></div>
+          <div class="osum-row"><span class="osum-lbl">Gift Box</span><span class="osum-val" style="color:var(--green);">&#10003; Free</span></div>
+          <div class="osum-row">
+            <span class="osum-lbl" style="font-weight:600;color:var(--ink);">Total</span>
+            <span class="osum-val osum-total" id="sTotal">&#8212;</span>
+          </div>
+        </div>
+
+        <!-- Contact fields -->
+        <div class="orow">
+          <div class="ofield">
+            <label>Your Name</label>
+            <input class="oinput" type="text" id="oCustomerName" placeholder="Full name" autocomplete="name"/>
+          </div>
+          <div class="ofield">
+            <label>Email Address</label>
+            <input class="oinput" type="email" id="oEmail" placeholder="you@email.com" autocomplete="email"/>
+          </div>
+        </div>
+
+        <div class="ofield">
+          <label>WhatsApp / Phone <span class="opt">(optional)</span></label>
+          <input class="oinput" type="tel" id="oPhone" placeholder="+1 555 000 0000" autocomplete="tel"/>
+        </div>
+
+        <div class="ofield">
+          <label>Street Address</label>
+          <input class="oinput" type="text" id="oStreet" placeholder="123 Main St" autocomplete="address-line1"/>
+        </div>
+
+        <div class="orow">
+          <div class="ofield">
+            <label>City</label>
+            <input class="oinput" type="text" id="oCity" placeholder="Minneapolis" autocomplete="address-level2"/>
+          </div>
+          <div class="ofield">
+            <label>State / Province</label>
+            <input class="oinput" type="text" id="oState" placeholder="MN" autocomplete="address-level1"/>
+          </div>
+        </div>
+
+        <div class="orow">
+          <div class="ofield">
+            <label>ZIP / Postal Code</label>
+            <input class="oinput" type="text" id="oZip" placeholder="55401" autocomplete="postal-code"/>
+          </div>
+          <div class="ofield">
+            <label>Country</label>
+            <input class="oinput" type="text" id="oCountry" placeholder="United States" autocomplete="country-name"/>
+          </div>
+        </div>
+
+        <div class="ofield">
+          <label>Special Requests <span class="opt">(optional)</span></label>
+          <textarea class="otextarea" id="oNotes" placeholder="Gift message, special instructions..."></textarea>
+        </div>
+
+        <div class="notice">
+          &#10022;&ensp;You will be redirected to Stripe's secure checkout to pay. Ships within 2–3 weeks after payment. Order confirmation sent by email within 24 hours.
+        </div>
+
+        <div id="oCheckoutErr"></div>
+
+        <div class="form-foot">
+          <button type="button" class="obtn obtn-prev" onclick="prevStep()">&larr; Back</button>
+          <button type="button" class="obtn obtn-submit" id="oSubmit" onclick="submitOrder()">Pay Securely &rarr;</button>
+        </div>
+      </div>
+
+    </div><!-- /oFormInner -->
+
+    <!-- SUCCESS STATE -->
+    <div id="oConfirm">
+      <div style="width:60px;height:60px;border-radius:50%;background:rgba(184,146,74,.1);border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 1.4rem;font-size:1.6rem;color:var(--gold-deep);">&#10003;</div>
+      <h3>Order <em>Received</em></h3>
+      <p>Jazakallah khayran! We will confirm everything by email within 24 hours. Your mat will be handcrafted with care.</p>
+      <div class="oconf-ref" id="oConfRef">Payment confirmed. Check your email for order details.</div>
+      <div style="margin-top:2rem;display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;">
+        <a href="index.html" class="obtn obtn-next" style="display:inline-flex;align-items:center;">Back to Home</a>
+        <a href="mailto:sajadastudios@gmail.com" class="obtn obtn-prev" style="display:inline-flex;align-items:center;">Email Us</a>
+      </div>
+    </div>
+
+  </div><!-- /panel-right -->
+</div><!-- /page-body -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-brand">
+      <div class="logo">Sajda <em>Studio</em></div>
+      <div class="ar">سجدة &middot; ستوديو</div>
+    </div>
+    <div class="foot-links">
+      <a href="index.html#collections">Collections</a>
+      <a href="index.html#bundles">Bundles</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; 2026 Sajda Studio &middot; Muslim-owned &middot; Minneapolis, MN</span>
+    <div style="display:flex;gap:1.2rem;">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── HAMBURGER ─────────────────────────────────────────────────────────────────
+function toggleMenu() {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobMenu').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobMenu').classList.remove('open');
+}
+
+// ── PRICING — must match backend BASE_PRICES exactly ─────────────────────────
+var basePrices  = { 'single': 35, 'duo': 60, 'family': 110 };
+var matCounts   = { 'single': 1,  'duo': 2,  'family': 4 };
+var bundleNames = {
+  'single': 'Single Mat',
+  'duo':    'Duo Set (2 mats)',
+  'family': 'Family Set (4 mats)'
+};
+
+// ── STEP STATE ────────────────────────────────────────────────────────────────
+var currentStep = 1;
+
+function showStep(n) {
+  currentStep = n;
+
+  // panels
+  document.querySelectorAll('.ostep').forEach(function(s) { s.classList.remove('active'); });
+  var panel = document.getElementById('ostep' + n);
+  if (panel) panel.classList.add('active');
+
+  // step bar indicators
+  ['si1','si2','si3'].forEach(function(id, i) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.classList.remove('active','done');
+    if (i < n - 1)    el.classList.add('done');
+    if (i === n - 1)  el.classList.add('active');
+  });
+
+  // fill summary on step 3
+  if (n === 3) fillSummary();
+
+  // scroll form into view on mobile
+  if (window.innerWidth <= 900) {
+    var bar = document.getElementById('stepBar');
+    if (bar) bar.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+}
+
+function nextStep() {
+  if (currentStep === 1) {
+    var b = document.getElementById('oBundle').value;
+    if (!b) {
+      var sel = document.getElementById('oBundle');
+      sel.style.borderColor = 'var(--error)';
+      sel.focus();
+      setTimeout(function() { sel.style.borderColor = ''; }, 1800);
+      return;
+    }
+    updateNameFields(b);
+    updateSymbolRows(b);
+  }
+  if (currentStep < 3) showStep(currentStep + 1);
+}
+
+function prevStep() {
+  if (currentStep > 1) showStep(currentStep - 1);
+}
+
+// ── COLOUR PICKER (left panel swatches) ───────────────────────────────────────
+function pickColour(el) {
+  document.querySelectorAll('.sw').forEach(function(s) { s.classList.remove('on'); });
+  el.classList.add('on');
+
+  // Swap photo
+  var photo = el.getAttribute('data-photo');
+  var img   = document.getElementById('matPhoto');
+  if (img && photo) {
+    img.style.opacity = '0';
+    setTimeout(function() { img.src = photo; img.style.opacity = '1'; }, 180);
+  }
+
+  // Update colour name label
+  var nameEl = document.getElementById('colourName');
+  if (nameEl) nameEl.textContent = el.getAttribute('data-val');
+
+  // Keep modal colour dot in sync (not used here — kept for parity)
+  document.querySelectorAll('.mcol').forEach(function(c) { c.classList.remove('on'); });
+  var val = el.getAttribute('data-val');
+  document.querySelectorAll('.mcol[data-val="' + val + '"]').forEach(function(c) { c.classList.add('on'); });
+}
+
+// ── NAME FIELDS ───────────────────────────────────────────────────────────────
+function updateNameFields(bundle) {
+  var wrap  = document.getElementById('nameFields');
+  var count = matCounts[bundle] || 1;
+  wrap.innerHTML = '';
+  for (var i = 0; i < count; i++) {
+    var lbl = count === 1 ? 'Name to embroider' : 'Name for Mat ' + (i + 1);
+    wrap.innerHTML +=
+      '<div class="ofield">' +
+        '<label>' + lbl + ' <span class="opt">(+$7)</span></label>' +
+        '<input class="name-inp oinput" type="text" placeholder="e.g. Ahmed" maxlength="30"/>' +
+        '<div class="ofield-hint">Arabic or Latin script &middot; max 30 characters &middot; leave blank to skip</div>' +
+      '</div>';
+  }
+}
+
+// ── SYMBOL ROWS ───────────────────────────────────────────────────────────────
+function updateSymbolRows(bundle) {
+  var count = matCounts[bundle] || 1;
+  var wrap  = document.getElementById('symbolRows');
+  wrap.innerHTML = '';
+  for (var i = 0; i < count; i++) {
+    var label = count > 1 ? 'Mat ' + (i + 1) : 'Your mat';
+    wrap.innerHTML +=
+      '<div style="margin-bottom:1.1rem;">' +
+        '<div style="font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.16em;color:var(--ink-soft);text-transform:uppercase;margin-bottom:.5rem;font-weight:600;">' + label + '</div>' +
+        '<div class="symbol-opts">' +
+          '<div class="sym-btn picked" data-mat="' + i + '" data-sym="none"  onclick="pickSymbol(this)"><span class="sym-icon">&mdash;</span><span class="sym-lbl">None</span></div>' +
+          '<div class="sym-btn"        data-mat="' + i + '" data-sym="heart" onclick="pickSymbol(this)"><span class="sym-icon">&#9829;</span><span class="sym-lbl">Heart +$3</span></div>' +
+          '<div class="sym-btn"        data-mat="' + i + '" data-sym="moon"  onclick="pickSymbol(this)"><span class="sym-icon">&#9790;</span><span class="sym-lbl">Moon +$3</span></div>' +
+        '</div>' +
+      '</div>';
+  }
+}
+
+function pickSymbol(el) {
+  var matIdx = el.getAttribute('data-mat');
+  document.querySelectorAll('.sym-btn[data-mat="' + matIdx + '"]').forEach(function(b) { b.classList.remove('picked'); });
+  el.classList.add('picked');
+}
+
+function getSelectedSymbols() {
+  var result = [];
+  document.querySelectorAll('#symbolRows > div').forEach(function(matDiv) {
+    var picked = matDiv.querySelector('.sym-btn.picked');
+    result.push(picked ? picked.getAttribute('data-sym') : 'none');
+  });
+  return result;
+}
+
+// ── SUMMARY ───────────────────────────────────────────────────────────────────
+function fillSummary() {
+  var b        = document.getElementById('oBundle').value;
+  var names    = Array.from(document.querySelectorAll('.name-inp')).map(function(n) { return n.value.trim(); }).filter(Boolean);
+  var symbols  = getSelectedSymbols();
+  var symCount   = symbols.filter(function(s) { return s !== 'none'; }).length;
+  var nameCost   = names.length * 7;
+  var symCost    = symCount * 3;
+  var tasbihEl   = document.getElementById('oTasbih');
+  var tasbihCost = (tasbihEl && tasbihEl.checked) ? 5 : 0;
+  var base       = basePrices[b] || 0;
+  var total      = (base + nameCost + symCost + tasbihCost).toFixed(2);
+
+  var colSwatch = document.querySelector('.sw.on');
+  var colName   = colSwatch ? colSwatch.getAttribute('data-val') : '—';
+
+  document.getElementById('sProduct').textContent  = bundleNames[b] || '—';
+  document.getElementById('sColor').textContent    = colName;
+  document.getElementById('sNames').textContent    = names.join(', ') || 'None';
+  document.getElementById('sPersonal').textContent = names.length
+    ? '$' + nameCost.toFixed(2) + ' (' + names.length + ' \xd7 $7)'
+    : 'None';
+
+  if (symCount > 0) {
+    var symList = [];
+    symbols.forEach(function(s, i) {
+      if (s !== 'none') symList.push((matCounts[b] > 1 ? 'Mat ' + (i+1) + ': ' : '') + (s === 'heart' ? 'Heart &#9829;' : 'Moon &#9790;'));
+    });
+    document.getElementById('sSymbol').innerHTML   = '$' + symCost.toFixed(2) + ' &mdash; ' + symList.join(', ');
+    document.getElementById('sSymbolRow').style.display = 'flex';
+  } else {
+    document.getElementById('sSymbolRow').style.display = 'none';
+  }
+
+  var tasbihRowEl = document.getElementById('sTasbihRow');
+  if (tasbihRowEl) tasbihRowEl.style.display = tasbihCost > 0 ? 'flex' : 'none';
+  document.getElementById('sTotal').textContent = base ? '$' + total : '—';
+}
+
+function calcTotal(bundle, namesArr, symsArr) {
+  var base       = basePrices[bundle] || 0;
+  var mats       = matCounts[bundle]  || 1;
+  var extra      = 0;
+  var tasbihEl   = document.getElementById('oTasbih');
+  var tasbihCost = (tasbihEl && tasbihEl.checked) ? 5 : 0;
+  for (var i = 0; i < mats; i++) {
+    if (namesArr[i] && namesArr[i].trim()) extra += 7;
+    if (symsArr[i]  && symsArr[i] !== 'none') extra += 3;
+  }
+  return base + extra + tasbihCost;
+}
+
+// ── SUBMIT — Stripe checkout ──────────────────────────────────────────────────
+function submitOrder() {
+  var name    = document.getElementById('oCustomerName').value.trim();
+  var email   = document.getElementById('oEmail').value.trim();
+  var street  = document.getElementById('oStreet').value.trim();
+  var city    = document.getElementById('oCity').value.trim();
+  var state   = document.getElementById('oState').value.trim();
+  var zip     = document.getElementById('oZip').value.trim();
+  var country = document.getElementById('oCountry').value.trim();
+
+  // Build combined address string for Airtable (same field, no backend changes)
+  var addressParts = [street, city, state, zip, country].filter(Boolean);
+  var address = addressParts.join(', ');
+
+  // Validation
+  if (!name) {
+    highlight('oCustomerName'); return;
+  }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    highlight('oEmail'); return;
+  }
+  if (!street) {
+    highlight('oStreet'); return;
+  }
+  if (!city) {
+    highlight('oCity'); return;
+  }
+  if (!zip) {
+    highlight('oZip'); return;
+  }
+
+  var b = document.getElementById('oBundle').value;
+  if (!b || !basePrices[b]) { alert('Please go back and select a product.'); return; }
+
+  var colSwatch = document.querySelector('.sw.on');
+  var color     = colSwatch ? colSwatch.getAttribute('data-val') : '';
+  var allNames  = Array.from(document.querySelectorAll('.name-inp')).map(function(n) { return n.value.trim(); });
+  var allSyms   = getSelectedSymbols();
+  var syms      = allSyms.map(function(s, i) { return s !== 'none' ? 'Mat' + (i+1) + ':' + s : ''; }).filter(Boolean);
+  var thread    = document.getElementById('oThread').value;
+  var phone     = document.getElementById('oPhone').value.trim();
+  var notes     = document.getElementById('oNotes').value.trim();
+  var occasion  = document.getElementById('oOccasion').value;
+
+  var totalDollars = calcTotal(b, allNames, allSyms);
+  var totalCents   = totalDollars * 100;
+
+  var btn = document.getElementById('oSubmit');
+  btn.textContent = 'Redirecting…';
+  btn.disabled    = true;
+
+  // ── POST to /api/create-checkout ─────────────────────────────────────────
+  // All field names kept identical to webhook expectations
+  fetch('/api/create-checkout', {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      amountCents:  totalCents,
+      bundleName:   b,
+      email:        email,
+      customerName: name,
+      matName1:     allNames[0] || '',
+      matName2:     allNames[1] || '',
+      matName3:     allNames[2] || '',
+      matName4:     allNames[3] || '',
+      symbol:       syms.join(', '),
+      color:        color,
+      address:      address,
+      phone:        phone,
+      thread:       thread,
+      occasion:     occasion,
+      notes:        notes,
+      tasbih:       (document.getElementById('oTasbih') && document.getElementById('oTasbih').checked) ? 'yes' : 'no',
+      successUrl:   window.location.origin + window.location.pathname + '?order=success',
+      cancelUrl:    window.location.origin + window.location.pathname + '?order=cancelled'
+    })
+  })
+  .then(function(r) {
+    if (!r.ok) return r.json().then(function(d) { throw new Error(d.error || 'Server error ' + r.status); });
+    return r.json();
+  })
+  .then(function(data) {
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      throw new Error(data.error || 'No checkout URL returned.');
+    }
+  })
+  .catch(function(err) {
+    console.error('Checkout error:', err);
+    btn.textContent = 'Pay Securely \u2192';
+    btn.disabled    = false;
+    var errDiv = document.getElementById('oCheckoutErr');
+    if (errDiv) {
+      errDiv.textContent = 'Payment could not start: ' + err.message + '. Email sajadastudios@gmail.com to order directly.';
+      errDiv.style.display = 'block';
+    }
+  });
+}
+
+function highlight(id) {
+  var el = document.getElementById(id);
+  el.style.borderColor = 'var(--error)';
+  el.focus();
+  setTimeout(function() { el.style.borderColor = ''; }, 2000);
+}
+
+// ── HANDLE STRIPE RETURN ──────────────────────────────────────────────────────
+(function handleStripeReturn() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('order') === 'success') {
+    history.replaceState({}, '', window.location.pathname);
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('oFormInner').style.display = 'none';
+      document.getElementById('oConfirm').style.display   = 'flex';
+    });
+  }
+  if (params.get('order') === 'cancelled') {
+    history.replaceState({}, '', window.location.pathname);
+  }
+})();
+
+// ── AUTO-SELECT BUNDLE FROM URL PARAM ─────────────────────────────────────────
+// Link from index.html: <a href="customize.html?bundle=duo">Order Duo Set</a>
+document.addEventListener('DOMContentLoaded', function() {
+  var params = new URLSearchParams(window.location.search);
+  var bundle = params.get('bundle');
+  if (bundle && (bundle === 'single' || bundle === 'duo' || bundle === 'family')) {
+    var sel = document.getElementById('oBundle');
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value === bundle) { sel.selectedIndex = i; break; }
+    }
+  }
+});
+
+// ── GOOGLE PLACES AUTOCOMPLETE ────────────────────────────────────────────────
+function initGooglePlaces() {
+  var streetInput = document.getElementById('oStreet');
+  if (!streetInput || !window.google || !window.google.maps) return;
+
+  var autocomplete = new google.maps.places.Autocomplete(streetInput, {
+    types: ['address'],
+    fields: ['address_components', 'formatted_address']
+  });
+
+  autocomplete.addListener('place_changed', function() {
+    var place = autocomplete.getPlace();
+    if (!place.address_components) return;
+
+    var streetNum = '', route = '', city = '', state = '', zip = '', country = '';
+
+    place.address_components.forEach(function(comp) {
+      var types = comp.types;
+      if (types.indexOf('street_number') > -1)              streetNum = comp.long_name;
+      if (types.indexOf('route') > -1)                       route     = comp.long_name;
+      if (types.indexOf('locality') > -1)                    city      = comp.long_name;
+      if (types.indexOf('sublocality_level_1') > -1 && !city) city    = comp.long_name;
+      if (types.indexOf('administrative_area_level_1') > -1)  state    = comp.short_name;
+      if (types.indexOf('postal_code') > -1)                  zip      = comp.long_name;
+      if (types.indexOf('country') > -1)                      country  = comp.long_name;
+    });
+
+    streetInput.value = (streetNum + ' ' + route).trim();
+    if (city)    document.getElementById('oCity').value    = city;
+    if (state)   document.getElementById('oState').value   = state;
+    if (zip)     document.getElementById('oZip').value     = zip;
+    if (country) document.getElementById('oCountry').value = country;
+
+    // Move focus to city if it wasn't auto-filled
+    if (!city) document.getElementById('oCity').focus();
+  });
+
+  // Style the Places dropdown to match the site
+  streetInput.setAttribute('placeholder', 'Start typing your street address…');
+}
+</script>
+
+<!-- Google Places — loads after page, calls initGooglePlaces when ready -->
+<!-- IMPORTANT: Replace YOUR_GOOGLE_MAPS_API_KEY with your actual key in Vercel env or directly -->
+<script>
+(function() {
+  var key = typeof GOOGLE_MAPS_KEY !== 'undefined' ? GOOGLE_MAPS_KEY : '';
+  if (!key) {
+    // Fallback: if no key set, autocomplete simply won't activate — fields still work manually
+    return;
+  }
+  var s = document.createElement('script');
+  s.src = 'https://maps.googleapis.com/maps/api/js?key=' + key + '&libraries=places&callback=initGooglePlaces';
+  s.async = true;
+  s.defer = true;
+  document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>

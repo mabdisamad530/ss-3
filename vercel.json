@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/mat-black\\.jpeg", "dest": "/mat-black.jpeg" },
+    { "src": "/mat-grey-purple\\.jpeg", "dest": "/mat-grey-purple.jpeg" },
+    { "src": "/mat-pink\\.jpeg", "dest": "/mat-pink.jpeg" },
+    { "src": "/mat-deyal-purple\\.jpeg", "dest": "/mat-deyal-purple.jpeg" },
+    { "src": "/mat-royal-blue\\.jpeg", "dest": "/mat-royal-blue.jpeg" },
+    { "src": "/mat-burgundy\\.jpeg", "dest": "/mat-burgundy.jpeg" },
+    { "src": "/box-black\\.jpeg", "dest": "/box-black.jpeg" },
+    { "src": "/box-royal-blue\\.jpeg", "dest": "/box-royal-blue.jpeg" },
+    { "src": "/box-grey-purple\\.jpeg", "dest": "/box-grey-purple.jpeg" },
+    { "src": "/box-pink\\.jpeg", "dest": "/box-pink.jpeg" },
+    { "src": "/box-deyal-purple\\.jpeg", "dest": "/box-deyal-purple.jpeg" },
+    { "src": "/box-burgundy\\.jpeg", "dest": "/box-burgundy.jpeg" },
+    { "src": "/customize\\.html", "dest": "/customize.html" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
