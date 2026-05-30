@@ -35,28 +35,20 @@ module.exports = async function handler(req, res) {
     const session = event.data.object;
     const meta = session.metadata || {};
 
-    const fields = {
-      'Order Ref':        session.id,
-      'Customer Name':    meta.customerName || '',
-      'Email':            session.customer_email || '',
-      'Amount Paid':      parseFloat((session.amount_total / 100).toFixed(2)),
-      'Currency':         (session.currency || 'usd').toUpperCase(),
-      'Mat Name 1':       meta.matName1 || '',
-      'Mat Name 2':       meta.matName2 || '',
-      'Mat Name 3':       meta.matName3 || '',
-      'Mat Name 4':       meta.matName4 || '',
-      'Symbol':           meta.symbol || '',
-      'Color':            meta.color || '',
-      'Shipping Address': meta.address || '',
-      'Phone':            meta.phone || '',
-      'Thread Color':     meta.thread || '',
-      'Occasion':         meta.occasion || '',
-      'Notes':            meta.notes || '',
-      'Tasbih':           meta.tasbih === 'yes' ? 'Yes' : 'No',
-      'Payment Status':   session.payment_status || '',
-      'Stripe Session':   session.id,
-      'Created At':       new Date().toISOString()
-    };
+   const fields = {
+  'Order Ref':        session.id,
+  'Customer Name':    meta.customerName || '',
+  'Email':            session.customer_email || '',
+  'Phone':            meta.phone || '',
+  'Shipping Address': meta.address || '',
+  'Amount Paid':      parseFloat((session.amount_total / 100).toFixed(2)),
+  'Currency':         (session.currency || 'usd').toUpperCase(),
+  'Payment Status':   session.payment_status || '',
+  'Stripe Session':   session.id,
+  'Item Count':       meta.itemCount ? parseInt(meta.itemCount) : 1,
+  'Cart Summary':     meta.cartSummary || '',
+  'Created At':       new Date().toISOString()
+};
 
     const url = `https://api.airtable.com/v0/${airtableBaseId}/Orders`;
     console.log('Posting to Airtable URL:', url);
