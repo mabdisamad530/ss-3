@@ -122,12 +122,37 @@ function buildItemLineItems(item, prefix) {
 }
 
 function buildCartSummary(cartItems) {
-  return cartItems.map((item, i) => {
-    const label = BUNDLE_LABELS[item.bundleName] || item.bundleName;
-    const names = [item.matName1, item.matName2, item.matName3, item.matName4]
-      .filter(Boolean).join('/');
-    return `[${i + 1}] ${label} ${item.color || ''}${names ? ' - ' + names : ''}`;
-  }).join(' | ').substring(0, 490);
+  const lines = cartItems.map((item, i) => {
+    const label   = BUNDLE_LABELS[item.bundleName] || item.bundleName;
+    const mats    = MAT_COUNT[item.bundleName] || 1;
+    const symbols = parseSymbols(item.symbol || '');
+
+    const matLines = [];
+    for (let m = 0; m < mats; m++) {
+      const name   = (item['matName' + (m + 1)] || '').trim();
+      const arabic = item['matArabic' + (m + 1)];
+      const sym    = symbols[m] !== 'none' ? symbols[m] : null;
+      const parts  = [];
+      if (name) parts.push(`"${name}"${arabic ? ' (Arabic)' : ''}`);
+      if (sym)  parts.push(`Symbol: ${sym}`);
+      if (parts.length) matLines.push(`Mat ${m + 1}: ${parts.join(', ')}`);
+    }
+
+    const addons = [];
+    if (item.tasbih === 'yes') addons.push('Tasbih');
+    if (item.thread)           addons.push(`Thread: ${item.thread}`);
+    if (item.occasion)         addons.push(`Occasion: ${item.occasion}`);
+
+    const body = [
+      `Color: ${item.color || 'N/A'}`,
+      ...matLines,
+      ...(addons.length ? [`Add-ons: ${addons.join(', ')}`] : [])
+    ].join(' | ');
+
+    return `[Order ${i + 1}] ${label} — ${body}`;
+  });
+
+  return lines.join('\n').substring(0, 490);
 }
 
 // ── Main handler ──────────────────────────────────────────────────────────────
