@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/hero\\.mov", "dest": "/hero.mov" },
+    { "src": "/mat-black\\.jpeg", "dest": "/mat-black.jpeg" },
+    { "src": "/mat-grey-purple\\.jpeg", "dest": "/mat-grey-purple.jpeg" },
+    { "src": "/mat-pink\\.jpeg", "dest": "/mat-pink.jpeg" },
+    { "src": "/mat-cream\\.jpeg", "dest": "/mat-cream.jpeg" },
+    { "src": "/mat-royal-blue\\.jpeg", "dest": "/mat-royal-blue.jpeg" },
+    { "src": "/mat-green\\.jpeg", "dest": "/mat-green.jpeg" },
+    { "src": "/box-black\\.jpeg", "dest": "/box-black.jpeg" },
+    { "src": "/box-royal-blue\\.jpeg", "dest": "/box-royal-blue.jpeg" },
+    { "src": "/box-grey-purple\\.jpeg", "dest": "/box-grey-purple.jpeg" },
+    { "src": "/box-pink\\.jpeg", "dest": "/box-pink.jpeg" },
+    { "src": "/box-cream\\.jpeg", "dest": "/box-cream.jpeg" },
+    { "src": "/box-green\\.jpeg", "dest": "/box-green.jpeg" },
+    { "src": "/customize\\.html", "dest": "/customize.html" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
