@@ -5,25 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sajda Studio – Personalised Prayer Mats</title>
 <meta name="description" content="Handcrafted personalised memory foam prayer mats, embroidered with your name. Ships worldwide in 1-2 weeks. Muslim-owned, Minneapolis MN.">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ivory:      #F2F1ED;
-  --warm-white: #FAFAF8;
-  --sand:       #EDECE6;
-  --sand-2:     #E3E2DA;
-  --gold:       #B34632;
-  --gold-lt:    #C97A64;
-  --gold-dk:    #8F3423;
-  --deep:       #171715;
-  --surf:       #F2F1ED;
-  --surf2:      #EAE9E3;
-  --cream:      #171715;
-  --cream2:     #57564F;
-  --muted:      #8B897F;
+  --ivory:      #F5F2EC;
+  --warm-white: #FBFAF7;
+  --sand:       #EEE9DF;
+  --sand-2:     #E4DDCF;
+  --gold:       #B0745A;
+  --gold-lt:    #C99274;
+  --gold-dk:    #6E2438;
+  --deep:       #2A2622;
+  --surf:       #F5F2EC;
+  --surf2:      #EAE3D6;
+  --cream:      #2A2622;
+  --cream2:     #55504A;
+  --muted:      #948D80;
   --green:      #4C7A5A;
-  --line:       rgba(23,23,21,.12);
-  --line-soft:  rgba(23,23,21,.08);
+  --line:       rgba(42,38,34,.14);
+  --line-soft:  rgba(42,38,34,.08);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -31,17 +31,18 @@ body{background:var(--warm-white);color:var(--deep);font-family:'Inter',Georgia,
 a{text-decoration:none;}
 
 /* ── ANNOUNCEMENT BAR ── */
-.ann{background:var(--deep);text-align:center;padding:.55rem 1rem;z-index:200;position:relative;}
-.ann-t{font-family:'Inter',serif;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;}
+.ann{background:var(--deep);text-align:center;padding:.7rem 1rem;z-index:200;position:relative;}
+.ann-t{font-family:'Inter',serif;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sand);font-weight:500;}
+.ann-t strong{color:var(--gold-lt);font-weight:600;}
 
 /* ── NAV ── */
-nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:.9rem 5vw;background:rgba(250,246,238,.95);border-bottom:1px solid var(--line-soft);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
-.n-logo{font-family:'Space Grotesk',serif;font-size:1.3rem;font-weight:600;color:var(--deep);letter-spacing:-.01em;}
+nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.3rem 5vw;background:rgba(251,250,247,.96);border-bottom:1px solid var(--line-soft);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+.n-logo{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:500;color:var(--deep);letter-spacing:-.005em;}
 .n-logo span{color:var(--muted);font-weight:400;}
-.n-links{display:flex;gap:1.8rem;list-style:none;}
-.n-links a{font-family:'Inter',serif;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream2);transition:color .3s;font-weight:500;}
+.n-links{display:flex;gap:2.2rem;list-style:none;}
+.n-links a{font-family:'Inter',serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream2);transition:color .3s;font-weight:500;}
 .n-links a:hover{color:var(--gold);}
-.n-cta{font-family:'Inter',serif;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--warm-white);background:var(--deep);padding:.55rem 1.3rem;transition:background .3s;cursor:pointer;border:none;}
+.n-cta{font-family:'Inter',serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--warm-white);background:var(--deep);padding:.7rem 1.5rem;transition:background .3s;cursor:pointer;border:none;}
 .n-cta:hover{background:var(--gold-dk);}
 
 /* ── HAMBURGER ── */
@@ -57,30 +58,30 @@ nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between
 .mob-cta{color:var(--gold-dk)!important;border-bottom:none!important;margin-top:.4rem;}
 
 /* ── HERO ── */
-.hero{position:relative;overflow:hidden;padding:6.5rem 5vw 5rem;background:var(--warm-white);}
-.h-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center;}
+.hero{position:relative;overflow:hidden;padding:8rem 5vw 6.5rem;background:var(--warm-white);}
+.h-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:7vw;align-items:center;}
 .h-copy{position:relative;z-index:2;max-width:480px;}
-.h-eye{font-family:'Inter',serif;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:1.3rem;}
-.hero h1{font-family:'Space Grotesk',serif;font-size:clamp(2.6rem,4.6vw,4.2rem);font-weight:500;line-height:1.05;letter-spacing:-.02em;color:var(--deep);margin-bottom:1.3rem;}
-.hero h1 em{font-style:normal;color:var(--gold);display:block;}
-.h-sub{font-size:1.06rem;color:var(--cream2);max-width:400px;margin-bottom:2.2rem;font-weight:300;line-height:1.75;}
-.h-btns{display:flex;gap:1.1rem;align-items:center;flex-wrap:wrap;margin-bottom:2rem;}
-.btn-g{font-family:'Inter',serif;font-size:.72rem;letter-spacing:.06em;color:var(--warm-white);background:var(--deep);padding:.95rem 2.1rem;display:inline-block;transition:background .3s;cursor:pointer;border:none;font-weight:500;}
-.btn-g:hover{background:var(--gold);}
-.btn-o{font-family:'Inter',serif;font-size:.72rem;letter-spacing:.02em;color:var(--cream2);display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 0;border-bottom:1px solid var(--line);transition:all .3s;font-weight:500;}
-.btn-o:hover{color:var(--gold-dk);border-bottom-color:var(--gold);}
-.h-trust{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;}
-.h-trust-txt{font-family:'Inter',serif;font-size:.62rem;letter-spacing:.06em;color:var(--muted);font-weight:400;}
+.h-eye{font-family:'Inter',serif;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:1.6rem;}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,4.6vw,4.2rem);font-weight:400;line-height:1.08;letter-spacing:-.01em;color:var(--deep);margin-bottom:1.6rem;}
+.hero h1 em{font-style:italic;color:var(--gold-dk);display:block;}
+.h-sub{font-size:1.06rem;color:var(--cream2);max-width:400px;margin-bottom:2.6rem;font-weight:300;line-height:1.8;}
+.h-btns{display:flex;gap:1.3rem;align-items:center;flex-wrap:wrap;margin-bottom:2.4rem;}
+.btn-g{font-family:'Inter',serif;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--warm-white);background:var(--deep);padding:1rem 2.2rem;display:inline-block;transition:background .3s;cursor:pointer;border:none;font-weight:500;}
+.btn-g:hover{background:var(--gold-dk);}
+.btn-o{font-family:'Inter',serif;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--cream2);display:inline-flex;align-items:center;gap:.6rem;padding:1rem 0;border-bottom:1px solid var(--line);transition:all .3s;font-weight:500;}
+.btn-o:hover{color:var(--gold-dk);border-bottom-color:var(--gold-dk);}
+.h-trust{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.h-trust-txt{font-family:'Inter',serif;font-size:.64rem;letter-spacing:.08em;color:var(--muted);font-weight:400;}
 .h-trust-dot{width:3px;height:3px;border-radius:50%;background:var(--muted);flex-shrink:0;}
 .h-visual{position:relative;z-index:1;aspect-ratio:4/5;overflow:hidden;background:var(--surf2);}
-.h-visual img{width:100%;height:100%;object-fit:cover;display:block;}
+.h-visual img,.h-visual video{width:100%;height:100%;object-fit:cover;object-position:center bottom;display:block;}
 
 /* ── SHARED SECTION ── */
-section{padding:5rem 5vw;}
-.stag{font-family:'Inter',serif;font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-dk);margin-bottom:.75rem;}
-.stit{font-family:'Space Grotesk',serif;font-size:clamp(1.8rem,3.4vw,3rem);font-weight:300;line-height:1.12;color:var(--deep);margin-bottom:.9rem;}
+section{padding:6.5rem 5vw;}
+.stag{font-family:'Inter',serif;font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-dk);margin-bottom:.9rem;}
+.stit{font-family:'Fraunces',serif;font-size:clamp(1.8rem,3.4vw,3rem);font-weight:300;line-height:1.14;color:var(--deep);margin-bottom:1.1rem;}
 .stit em{font-style:italic;color:var(--gold-dk);}
-.ssub{font-size:.94rem;color:var(--muted);max-width:450px;font-weight:300;line-height:1.82;}
+.ssub{font-size:.94rem;color:var(--muted);max-width:450px;font-weight:300;line-height:1.85;}
 
 /* ── COLLECTIONS ── */
 .coll{background:var(--warm-white);padding:5rem 5vw;}
@@ -94,7 +95,7 @@ section{padding:5rem 5vw;}
 .col-c:hover .col-img-main{opacity:0;}
 .col-c:hover .mw img{transform:scale(1.03);}
 .col-ov{padding-top:1.1rem;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;}
-.col-nm{font-family:'Space Grotesk',serif;font-size:1.05rem;font-weight:500;color:var(--deep);}
+.col-nm{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:500;color:var(--deep);}
 .col-pr{font-size:.85rem;color:var(--muted);}
 
 /* ── BUNDLES ── */
@@ -106,10 +107,10 @@ section{padding:5rem 5vw;}
 .bb{}
 .bdg{display:block;font-family:'Inter',serif;font-size:.62rem;letter-spacing:.06em;color:var(--muted);margin-bottom:.9rem;}
 .bdg.gr{color:var(--gold-dk);}
-.bnm{font-family:'Space Grotesk',serif;font-size:1.7rem;font-weight:500;color:var(--deep);line-height:1.1;margin-bottom:.5rem;}
+.bnm{font-family:'Fraunces',serif;font-size:1.7rem;font-weight:500;color:var(--deep);line-height:1.1;margin-bottom:.5rem;}
 .bds{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:1.1rem;max-width:34ch;}
 .bpr{display:flex;align-items:baseline;gap:.6rem;margin-bottom:1.1rem;}
-.bpn{font-family:'Space Grotesk',serif;font-size:1.5rem;color:var(--deep);font-weight:500;}
+.bpn{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--deep);font-weight:500;}
 .bpo{font-size:.9rem;color:var(--muted);text-decoration:line-through;}
 .bsv{font-family:'Inter',serif;font-size:.68rem;color:var(--green);}
 .bil{margin-bottom:1.6rem;}
@@ -122,7 +123,7 @@ section{padding:5rem 5vw;}
 .stats{background:var(--warm-white);padding:3rem 5vw;}
 .stats-in{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-soft);max-width:1000px;margin:0 auto;}
 .stat{text-align:center;padding:1.2rem 1rem;background:var(--warm-white);}
-.stat-n{font-family:'Space Grotesk',serif;font-size:2rem;font-weight:500;color:var(--deep);line-height:1;}
+.stat-n{font-family:'Fraunces',serif;font-size:2rem;font-weight:500;color:var(--deep);line-height:1;}
 .stat-l{font-family:'Inter',serif;font-size:.62rem;letter-spacing:.06em;color:var(--muted);margin-top:.4rem;}
 
 /* ── CUSTOMIZE ── */
@@ -131,7 +132,7 @@ section{padding:5rem 5vw;}
 .cu-steps{margin-top:1.8rem;}
 .stp{display:flex;gap:1.4rem;padding:1.3rem 0;border-bottom:1px solid var(--line-soft);}
 .stp-n{font-family:'Inter',serif;font-size:.7rem;color:var(--muted);min-width:20px;padding-top:.2rem;font-weight:500;}
-.stp-b h4{font-family:'Space Grotesk',serif;font-size:1.15rem;font-weight:500;color:var(--deep);margin-bottom:.2rem;}
+.stp-b h4{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:500;color:var(--deep);margin-bottom:.2rem;}
 .stp-b p{font-size:.84rem;color:var(--muted);font-weight:300;line-height:1.68;}
 .cu-vis{display:flex;flex-direction:column;align-items:center;gap:1.3rem;background:var(--surf2);padding:2rem;}
 .sw{width:26px;height:26px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .2s,border-color .2s;}
@@ -144,7 +145,7 @@ section{padding:5rem 5vw;}
 .og{cursor:pointer;transition:opacity .3s;}
 .og:hover{opacity:.7;}
 .og-icon{margin-bottom:1rem;display:flex;align-items:flex-end;height:60px;}
-.og-title{font-family:'Space Grotesk',serif;font-size:1.15rem;font-weight:500;color:var(--deep);margin-bottom:.4rem;}
+.og-title{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:500;color:var(--deep);margin-bottom:.4rem;}
 .og-title em{font-style:normal;color:var(--gold);}
 .og-desc{font-size:.86rem;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:.9rem;}
 .og-price{font-family:'Inter',serif;font-size:.68rem;color:var(--muted);}
@@ -158,7 +159,7 @@ section{padding:5rem 5vw;}
 .tc:hover{opacity:.85;}
 .stars{display:flex;gap:3px;margin-bottom:1rem;}
 .st{width:9px;height:9px;background:var(--gold);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);}
-.tq{font-family:'Space Grotesk',serif;font-size:1.05rem;font-style:normal;color:var(--deep);line-height:1.6;margin-bottom:1.2rem;font-weight:400;}
+.tq{font-family:'Fraunces',serif;font-size:1.05rem;font-style:normal;color:var(--deep);line-height:1.6;margin-bottom:1.2rem;font-weight:400;}
 .ta{display:flex;align-items:center;gap:.8rem;}
 .tav{width:32px;height:32px;border-radius:50%;background:var(--surf2);display:flex;align-items:center;justify-content:center;font-family:'Inter',serif;font-size:.7rem;color:var(--muted);flex-shrink:0;}
 .tnm{font-family:'Inter',serif;font-size:.78rem;color:var(--deep);font-weight:500;}
@@ -175,7 +176,7 @@ section{padding:5rem 5vw;}
 .about-val span{font-size:.84rem;color:var(--muted);font-weight:300;}
 
 /* ── CONTACT FORM ── */
-.about-form-title{font-family:'Space Grotesk',serif;font-size:1.6rem;font-weight:500;color:var(--deep);line-height:1.15;margin-bottom:1.8rem;}
+.about-form-title{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:500;color:var(--deep);line-height:1.15;margin-bottom:1.8rem;}
 .about-form-title em{font-style:normal;color:var(--gold);}
 .cf-field{margin-bottom:1.2rem;}
 .cf-label{display:block;font-family:'Inter',serif;font-size:.68rem;color:var(--cream2);margin-bottom:.5rem;font-weight:500;}
@@ -201,26 +202,26 @@ section{padding:5rem 5vw;}
 
 /* ── CTA BANNER ── */
 .cta-ban{background:var(--deep);padding:3.8rem 5vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;}
-.cta-t h2{font-family:'Space Grotesk',serif;font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:500;color:var(--warm-white);line-height:1.1;margin-bottom:.4rem;letter-spacing:-.01em;}
+.cta-t h2{font-family:'Fraunces',serif;font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:500;color:var(--warm-white);line-height:1.1;margin-bottom:.4rem;letter-spacing:-.01em;}
 .cta-t p{font-size:.9rem;color:#A8A7A0;font-weight:300;}
 .btn-dk{font-family:'Inter',serif;font-size:.72rem;color:var(--deep);background:var(--warm-white);padding:.9rem 2rem;display:inline-block;transition:all .3s;border:none;cursor:pointer;font-weight:500;}
 .btn-dk:hover{background:var(--gold-lt);}
 
 /* ── FOOTER ── */
-footer{background:var(--warm-white);border-top:1px solid var(--line);padding:3.5rem 5vw 2rem;}
-.ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4vw;margin-bottom:2.5rem;}
-.fl{font-family:'Space Grotesk',serif;font-size:1.2rem;font-weight:600;color:var(--deep);letter-spacing:-.01em;display:block;margin-bottom:.9rem;}
+footer{background:var(--warm-white);border-top:1px solid var(--line);padding:4.5rem 5vw 2.2rem;}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4vw;margin-bottom:3.2rem;}
+.fl{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:500;color:var(--deep);letter-spacing:-.005em;display:block;margin-bottom:1rem;}
 .fl span{color:var(--muted);font-weight:400;}
-.foot-about{font-size:.85rem;color:var(--muted);font-weight:300;line-height:1.78;max-width:230px;margin-bottom:1.2rem;}
-.fc h4{font-family:'Inter',serif;font-size:.68rem;color:var(--deep);margin-bottom:1.1rem;font-weight:500;}
+.foot-about{font-size:.85rem;color:var(--muted);font-weight:300;line-height:1.8;max-width:230px;margin-bottom:1.2rem;}
+.fc h4{font-family:'Inter',serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--deep);margin-bottom:1.3rem;font-weight:500;}
 .fc ul{list-style:none;}
-.fc li{margin-bottom:.55rem;}
+.fc li{margin-bottom:.6rem;}
 .fc a{font-size:.83rem;color:var(--muted);transition:color .3s;font-weight:300;}
 .fc a:hover{color:var(--deep);}
-.foot-social{display:flex;gap:1.5rem;margin-bottom:1.4rem;flex-wrap:wrap;}
-.soc-link{font-family:'Inter',serif;font-size:.72rem;color:var(--cream2);transition:color .3s;}
-.soc-link:hover{color:var(--deep);}
-.fb{border-top:1px solid var(--line-soft);padding-top:1.4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.foot-social{display:flex;gap:1.6rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+.soc-link{font-family:'Inter',serif;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cream2);transition:color .3s;}
+.soc-link:hover{color:var(--gold-dk);}
+.fb{border-top:1px solid var(--line-soft);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
 .fb p{font-size:.76rem;color:var(--muted);font-weight:300;}
 .pay{display:flex;gap:.4rem;flex-wrap:wrap;}
 .py{font-family:'Inter',serif;font-size:.66rem;color:var(--muted);}
@@ -231,6 +232,13 @@ footer{background:var(--warm-white);border-top:1px solid var(--line);padding:3.5
 .sticky-cta-txt span{color:var(--gold);font-weight:500;}
 .sticky-cta-btn{font-family:'Inter',serif;font-size:.72rem;color:var(--warm-white);background:var(--deep);padding:.75rem 1.4rem;white-space:nowrap;border:none;cursor:pointer;transition:background .3s;font-weight:500;}
 .sticky-cta-btn:hover{background:var(--gold);}
+
+/* ── PAGE HEADER (subpages) ── */
+.pg-head{background:var(--ivory);border-bottom:1px solid var(--line);padding:4.5rem 5vw 3.5rem;text-align:center;}
+.pg-head .stag{text-align:center;}
+.pg-head h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2.2rem,4.4vw,3.4rem);line-height:1.1;color:var(--deep);margin-bottom:.8rem;}
+.pg-head h1 em{font-style:italic;color:var(--gold-dk);}
+.pg-head p{color:var(--muted);font-size:.98rem;max-width:46ch;margin:0 auto;font-weight:300;}
 
 /* ── FADE IN ── */
 .fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
@@ -268,18 +276,17 @@ footer{background:var(--warm-white);border-top:1px solid var(--line);padding:3.5
 
 <!-- ANNOUNCEMENT BAR -->
 <div class="ann">
-  <div class="ann-t">&#x2728; Use <strong>SAJDA10</strong> for 10% off &middot; Worldwide shipping &#x2728;</div>
+  <div class="ann-t">Use <strong>SAJDA10</strong> for 10% off &middot; Worldwide shipping</div>
 </div>
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="n-logo">Sajda<span> Studio</span></a>
+  <a href="index.html" class="n-logo">Sajda<span> Studio</span></a>
   <ul class="n-links" id="navLinks">
-    <li><a href="#collections" onclick="closeMenu()">Collections</a></li>
-    <li><a href="#bundles" onclick="closeMenu()">Sets &amp; Bundles</a></li>
-    <li><a href="#customize" onclick="closeMenu()">Customize</a></li>
-    <li><a href="#about" onclick="closeMenu()">About</a></li>
-    <li><a href="#faq" onclick="closeMenu()">Info</a></li>
+    <li><a href="prayer-mats.html" onclick="closeMenu()">Prayer Mats</a></li>
+    <li><a href="sets-gifts.html" onclick="closeMenu()">Sets &amp; Gifts</a></li>
+    <li><a href="our-story.html" onclick="closeMenu()">Our Story</a></li>
+    <li><a href="help.html" onclick="closeMenu()">Help</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:1rem;">
     <button class="n-cta" onclick="window.location.href='customize.html'">Design Your Mat</button>
@@ -291,12 +298,11 @@ footer{background:var(--warm-white);border-top:1px solid var(--line);padding:3.5
 
 <!-- MOBILE MENU -->
 <div class="mob-menu" id="mobMenu">
-  <a href="#collections" onclick="closeMenu()">Collections</a>
-  <a href="#bundles" onclick="closeMenu()">Sets &amp; Bundles</a>
-  <a href="#customize" onclick="closeMenu()">Customize</a>
-  <a href="#about" onclick="closeMenu()">About</a>
-  <a href="#faq" onclick="closeMenu()">Info</a>
-  <a href="#" class="mob-cta" onclick="closeMenu();window.location.href='customize.html';">Design Your Mat</a>
+  <a href="prayer-mats.html" onclick="closeMenu()">Prayer Mats</a>
+  <a href="sets-gifts.html" onclick="closeMenu()">Sets &amp; Gifts</a>
+  <a href="our-story.html" onclick="closeMenu()">Our Story</a>
+  <a href="help.html" onclick="closeMenu()">Help</a>
+  <a href="customize.html" class="mob-cta" onclick="closeMenu();">Design Your Mat</a>
 </div>
 
 <!-- HERO -->
@@ -308,7 +314,7 @@ footer{background:var(--warm-white);border-top:1px solid var(--line);padding:3.5
       <p class="h-sub">Personalised memory foam prayer mats in embossed velvet &mdash; embroidered with your name, delivered worldwide.</p>
       <div class="h-btns">
         <button class="btn-g" onclick="window.location.href='customize.html'">Design Your Mat</button>
-        <a href="#bundles" class="btn-o">Shop Sets &amp; Bundles &rarr;</a>
+        <a href="sets-gifts.html" class="btn-o">Shop Sets &amp; Gifts &rarr;</a>
       </div>
       <div class="h-trust">
         <span class="h-trust-txt">From $35</span>
@@ -319,19 +325,21 @@ footer{background:var(--warm-white);border-top:1px solid var(--line);padding:3.5
       </div>
     </div>
     <div class="h-visual">
-      <img src="/box-black.jpeg" alt="Sajda Studio prayer mat in gift box"/>
+      <video src="/hero.mp4" poster="/box-black.jpeg" autoplay muted loop playsinline aria-label="Sajda Studio prayer mat, embroidered with a name">
+        <img src="/box-black.jpeg" alt="Sajda Studio prayer mat in gift box"/>
+      </video>
     </div>
   </div>
 </section>
 
-<!-- COLLECTIONS -->
+<!-- COLLECTIONS TEASER -->
 <div class="coll" id="collections">
   <div class="coll-hd">
     <div>
       <div class="stag">Our Collections</div>
       <h2 class="stit">Choose Your <em>Style</em></h2>
     </div>
-    <button class="btn-o" onclick="window.location.href='customize.html'">Customize Yours &rarr;</button>
+    <a href="prayer-mats.html" class="btn-o">View All Colors &rarr;</a>
   </div>
   <div class="coll-grid">
     <div class="col-c" onclick="window.location.href='customize.html?bundle=single'">
@@ -356,36 +364,6 @@ footer{background:var(--warm-white);border-top:1px solid var(--line);padding:3.5
     </div>
     <div class="col-c" onclick="window.location.href='customize.html?bundle=single'">
       <div class="mw">
-        <img src="/mat-grey-purple.jpeg" alt="Grey Purple prayer mat" class="col-img-main" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;"/>
-        <img src="/box-grey-purple.jpeg" alt="Grey Purple prayer mat in box" class="col-img-hover" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;"/>
-      </div>
-      <div class="col-ov">
-        <div class="col-nm">Grey Purple</div>
-        <div class="col-pr">From $35</div>
-      </div>
-    </div>
-    <div class="col-c" onclick="window.location.href='customize.html?bundle=single'">
-      <div class="mw">
-        <img src="/mat-pink.jpeg" alt="Pink prayer mat" class="col-img-main" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;"/>
-        <img src="/box-pink.jpeg" alt="Pink prayer mat in box" class="col-img-hover" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;"/>
-      </div>
-      <div class="col-ov">
-        <div class="col-nm">Pink</div>
-        <div class="col-pr">From $35</div>
-      </div>
-    </div>
-    <div class="col-c" onclick="window.location.href='customize.html?bundle=single'">
-      <div class="mw">
-        <img src="/mat-deyal-purple.jpeg" alt="Deyal Purple prayer mat" class="col-img-main" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;"/>
-        <img src="/box-deyal-purple.jpeg" alt="Deyal Purple prayer mat in box" class="col-img-hover" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;"/>
-      </div>
-      <div class="col-ov">
-        <div class="col-nm">Deyal Purple</div>
-        <div class="col-pr">From $35</div>
-      </div>
-    </div>
-    <div class="col-c" onclick="window.location.href='customize.html?bundle=single'">
-      <div class="mw">
         <img src="/mat-burgundy.jpeg" alt="Burgundy prayer mat" class="col-img-main" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;"/>
         <img src="/box-burgundy.jpeg" alt="Burgundy prayer mat in box" class="col-img-hover" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;"/>
       </div>
@@ -397,90 +375,32 @@ footer{background:var(--warm-white);border-top:1px solid var(--line);padding:3.5
   </div>
 </div>
 
-<!-- SETS & BUNDLES -->
+<!-- SETS & GIFTS TEASER -->
 <section class="bun" id="bundles">
   <div class="bun-hd">
     <div>
-      <div class="stag">Sets &amp; Bundles</div>
+      <div class="stag">Sets &amp; Gifts</div>
       <h2 class="stit">More <em>to Give</em></h2>
     </div>
     <p class="ssub" style="text-align:right;">Every set ships together &mdash; in 1&ndash;2 weeks.</p>
   </div>
   <div class="bun-g">
-    <!-- Duo Set -->
     <div class="bc">
-      <div class="bv">
-        <svg width="120" height="160" viewBox="0 0 360 480" fill="none">
-          <defs>
-            <linearGradient id="bg1" x1="0" y1="0" x2="360" y2="480" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#921E2E"/><stop offset="100%" stop-color="#420C14"/>
-            </linearGradient>
-            <linearGradient id="bg2" x1="0" y1="0" x2="360" y2="480" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#7A30B0"/><stop offset="100%" stop-color="#280A48"/>
-            </linearGradient>
-          </defs>
-          <g transform="translate(-20,0)">
-            <rect width="170" height="240" rx="2" fill="url(#bg1)"/>
-            <rect x="5" y="5" width="160" height="230" fill="none" stroke="#C84858" stroke-width="3"/>
-            <path d="M43,224L43,98Q85,46 127,98L127,224Z" fill="none" stroke="#C84858" stroke-width="3"/>
-          </g>
-          <g transform="translate(170,40)">
-            <rect width="170" height="240" rx="2" fill="url(#bg2)"/>
-            <rect x="5" y="5" width="160" height="230" fill="none" stroke="#A058D8" stroke-width="3"/>
-            <path d="M43,224L43,98Q85,46 127,98L127,224Z" fill="none" stroke="#A058D8" stroke-width="3"/>
-          </g>
-        </svg>
-      </div>
       <div class="bb">
         <span class="bdg">For Two</span>
         <div class="bnm">Duo Set</div>
         <div class="bds">Two mats, two names. Perfect for couples, siblings, or closest friends.</div>
         <div class="bpr"><span class="bpn">$60.00</span></div>
-        <ul class="bil">
-          <li>2 personalised prayer mats</li>
-          <li>Name embroidery per mat (+$7 each)</li>
-          <li>Optional heart or moon (+$3 each)</li>
-          <li>Worldwide shipping</li>
-        </ul>
-        <button class="bct" onclick="window.location.href='customize.html?bundle=duo'">Order Duo Set</button>
+        <a href="sets-gifts.html" class="bct" style="display:inline-block;">Shop Duo Set &rarr;</a>
       </div>
     </div>
-    <!-- Family Set -->
     <div class="bc">
-      <div class="bv">
-        <svg width="140" height="160" viewBox="0 0 420 480" fill="none">
-          <defs>
-            <linearGradient id="bg3" x1="0" y1="0" x2="190" y2="252" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#921E2E"/><stop offset="100%" stop-color="#420C14"/>
-            </linearGradient>
-            <linearGradient id="bg4" x1="0" y1="0" x2="190" y2="252" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#7A30B0"/><stop offset="100%" stop-color="#280A48"/>
-            </linearGradient>
-            <linearGradient id="bg5" x1="0" y1="0" x2="190" y2="252" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#1a2fa8"/><stop offset="100%" stop-color="#0a1866"/>
-            </linearGradient>
-            <linearGradient id="bg6" x1="0" y1="0" x2="190" y2="252" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#0d5c42"/><stop offset="100%" stop-color="#052e20"/>
-            </linearGradient>
-          </defs>
-          <g transform="translate(0,20)"><rect width="90" height="120" rx="1" fill="url(#bg3)"/><path d="M22,112L22,46Q45,22 68,46L68,112Z" fill="none" stroke="#C84858" stroke-width="2.5"/></g>
-          <g transform="translate(100,0)"><rect width="90" height="120" rx="1" fill="url(#bg4)"/><path d="M22,112L22,46Q45,22 68,46L68,112Z" fill="none" stroke="#A058D8" stroke-width="2.5"/></g>
-          <g transform="translate(200,20)"><rect width="90" height="120" rx="1" fill="url(#bg5)"/><path d="M22,112L22,46Q45,22 68,46L68,112Z" fill="none" stroke="#4466dd" stroke-width="2.5"/></g>
-          <g transform="translate(300,0)"><rect width="90" height="120" rx="1" fill="url(#bg6)"/><path d="M22,112L22,46Q45,22 68,46L68,112Z" fill="none" stroke="#2aaa80" stroke-width="2.5"/></g>
-        </svg>
-      </div>
       <div class="bb">
         <span class="bdg gr">Best Value</span>
         <div class="bnm">Family Set of 4</div>
         <div class="bds">Your entire family's prayer corner in one box. Four mats, four names, a unified gift.</div>
         <div class="bpr"><span class="bpn">$110.00</span></div>
-        <ul class="bil">
-          <li>4 personalised prayer mats</li>
-          <li>Each mat in any color &amp; name</li>
-          <li>Optional symbols per mat</li>
-          <li>Free shipping</li>
-        </ul>
-        <button class="bct" onclick="window.location.href='customize.html?bundle=family'">Order Family Set</button>
+        <a href="sets-gifts.html" class="bct" style="display:inline-block;">Shop Family Set &rarr;</a>
       </div>
     </div>
   </div>
@@ -533,82 +453,28 @@ footer{background:var(--warm-white);border-top:1px solid var(--line);padding:3.5
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- STORY TEASER -->
 <section class="about-sec" id="about">
   <div class="about-in">
     <div class="about-text">
       <div class="stag">Our Story</div>
       <h2 class="stit">Rooted in Faith.<br><em>Crafted with Care.</em></h2>
       <p class="about-p">Sajda Studio was born from a simple belief &mdash; that the space where you meet your Creator deserves more than something generic off a shelf. We are a small Muslim-owned team based in Minneapolis, Minnesota, handcrafting personalised prayer mats for families across the world.</p>
-      <p class="about-p">Every mat is made to order. Every name is embroidered by hand. Every box is packed with the intention that this gift will outlast any flower, any card, any candle &mdash; because it will be used five times a day, for years to come.</p>
-      <p class="about-p">We started with a belief that the Muslim gift market deserved better. We are still proving it, one mat at a time.</p>
-      <div class="about-vals">
-        <div class="about-val">
-          <div class="about-val-icon">&#9632;</div>
-          <div><strong>Muslim Owned</strong><span>Based in Minneapolis, MN</span></div>
-        </div>
-        <div class="about-val">
-          <div class="about-val-icon">&#9632;</div>
-          <div><strong>Handcrafted</strong><span>Every order made by hand</span></div>
-        </div>
-        <div class="about-val">
-          <div class="about-val-icon">&#9632;</div>
-          <div><strong>Ships Worldwide</strong><span>Delivered everywhere</span></div>
-        </div>
+      <a href="our-story.html" class="btn-o">Read Our Story &rarr;</a>
+    </div>
+    <div class="about-vals">
+      <div class="about-val">
+        <div class="about-val-icon">&#9632;</div>
+        <div><strong>Muslim Owned</strong><span>Based in Minneapolis, MN</span></div>
       </div>
-    </div>
-    <div class="about-contact" id="contact">
-      <div class="stag">Get In Touch</div>
-      <h3 class="about-form-title">Have a question or<br><em>bulk order enquiry?</em></h3>
-      <div class="cf-field">
-        <label class="cf-label">Your Name</label>
-        <input class="cf-input" type="text" id="cfName" placeholder="e.g. Amina Hassan"/>
-        <div class="cf-err" id="cfNameErr"></div>
+      <div class="about-val">
+        <div class="about-val-icon">&#9632;</div>
+        <div><strong>Handcrafted</strong><span>Every order made by hand</span></div>
       </div>
-      <div class="cf-field">
-        <label class="cf-label">Email Address</label>
-        <input class="cf-input" type="email" id="cfEmail" placeholder="you@email.com"/>
-        <div class="cf-err" id="cfEmailErr"></div>
+      <div class="about-val">
+        <div class="about-val-icon">&#9632;</div>
+        <div><strong>Ships Worldwide</strong><span>Delivered everywhere</span></div>
       </div>
-      <div class="cf-field">
-        <label class="cf-label">Message</label>
-        <textarea class="cf-textarea" id="cfMsg" placeholder="Bulk orders, custom designs, general questions..."></textarea>
-        <div class="cf-err" id="cfMsgErr"></div>
-      </div>
-      <button class="cf-btn" onclick="submitContact()">Send Message &rarr;</button>
-      <div class="cf-success" id="cfSuccess">&#10003; Message sent. We'll reply within 24 hours.</div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq" id="faq">
-  <div class="stag">Info</div>
-  <h2 class="stit">Frequently Asked <em>Questions</em></h2>
-  <div class="faq-g">
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">What are the prices?<span class="arr">&#9662;</span></div>
-      <div class="faq-ans">All prayer mats are $35 each. Name personalization is +$7 per mat. Adding a heart or moon symbol is +$3 per mat. Duo Sets are $60. Family Sets (4 mats) are $110. Use code <strong>SAJDA10</strong> for 10% off your first order.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Shipping &amp; Delivery<span class="arr">&#9662;</span></div>
-      <div class="faq-ans">Orders are delivered within 1&ndash;2 weeks worldwide. You will receive a tracking number once your order ships. We ship worldwide. Expedited options are available &mdash; email us to arrange.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Personalization Options<span class="arr">&#9662;</span></div>
-      <div class="faq-ans">Embroider any name in Arabic or Latin script for +$7 per mat. Optionally add a heart or crescent moon symbol for +$3 per mat. Choose thread color at checkout — Gold, White, or Black. For special requests email <a href="mailto:sajadastudios@gmail.com" style="color:var(--gold);">sajadastudios@gmail.com</a>.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Returns &amp; Exchanges<span class="arr">&#9662;</span></div>
-      <div class="faq-ans">Because every mat is personalised specifically for you, we cannot accept returns on personalised items. If your item arrives damaged or incorrect, contact us within 48 hours and we will remake and reship at no cost to you.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Bundle Savings<span class="arr">&#9662;</span></div>
-      <div class="faq-ans">Duo Sets save on the bundle price vs ordering separately. Family Sets offer the best per-mat value — 4 mats for $110. All orders ship within 1&ndash;2 weeks.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">How Do I Order?<span class="arr">&#9662;</span></div>
-      <div class="faq-ans">Click "Design Your Mat" anywhere on the site. Select your style, color, names (+$7 each), and optional symbols (+$3 each). Submit your order details and we will confirm by email within 24 hours with a secure payment link. For bulk orders of 10+ mats, email us for a custom quote.</div>
     </div>
   </div>
 </section>
@@ -626,33 +492,33 @@ footer{background:var(--warm-white);border-top:1px solid var(--line);padding:3.5
 <footer>
   <div class="ft">
     <div>
-      <a href="#" class="fl">Sajda<span> Studio</span></a>
+      <a href="index.html" class="fl">Sajda<span> Studio</span></a>
       <p class="foot-about">Bespoke personalised prayer mats, handcrafted to order. Muslim-owned &middot; Minneapolis, MN &middot; Est. 2026.</p>
     </div>
     <div class="fc">
       <h4>Shop</h4>
       <ul>
-        <li><a href="#collections">Prayer Mats</a></li>
-        <li><a href="#bundles">Duo Sets</a></li>
-        <li><a href="#bundles">Family Sets</a></li>
+        <li><a href="prayer-mats.html">Prayer Mats</a></li>
+        <li><a href="sets-gifts.html">Duo Sets</a></li>
+        <li><a href="sets-gifts.html">Family Sets</a></li>
               </ul>
     </div>
     <div class="fc">
       <h4>Gifts For</h4>
       <ul>
-        <li><a href="#occasions">Eid &amp; Occasions</a></li>
-        <li><a href="#occasions">Nikah</a></li>
-        <li><a href="#occasions">New Baby</a></li>
-        <li><a href="#occasions">Hajj &amp; Umrah</a></li>
+        <li><a href="customize.html">Eid &amp; Occasions</a></li>
+        <li><a href="customize.html">Nikah</a></li>
+        <li><a href="customize.html">New Baby</a></li>
+        <li><a href="customize.html">Hajj &amp; Umrah</a></li>
       </ul>
     </div>
     <div class="fc">
       <h4>Info</h4>
       <ul>
-        <li><a href="#faq">FAQs</a></li>
-        <li><a href="#faq">Shipping</a></li>
-        <li><a href="#contact">Contact Us</a></li>
-        <li><a href="#faq">Returns</a></li>
+        <li><a href="help.html#faq">FAQs</a></li>
+        <li><a href="help.html#shipping">Shipping</a></li>
+        <li><a href="help.html#contact">Contact Us</a></li>
+        <li><a href="help.html#returns">Returns</a></li>
       </ul>
     </div>
   </div>

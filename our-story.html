@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story – Sajda Studio</title>
+<meta name="description" content="Sajda Studio is a Muslim-owned studio in Minneapolis, MN, handcrafting personalised prayer mats — every name embroidered by hand.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:      #F5F2EC;
+  --warm-white: #FBFAF7;
+  --sand:       #EEE9DF;
+  --sand-2:     #E4DDCF;
+  --gold:       #B0745A;
+  --gold-lt:    #C99274;
+  --gold-dk:    #6E2438;
+  --deep:       #2A2622;
+  --surf:       #F5F2EC;
+  --surf2:      #EAE3D6;
+  --cream:      #2A2622;
+  --cream2:     #55504A;
+  --muted:      #948D80;
+  --green:      #4C7A5A;
+  --line:       rgba(42,38,34,.14);
+  --line-soft:  rgba(42,38,34,.08);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--warm-white);color:var(--deep);font-family:'Inter',Georgia,serif;font-size:18px;line-height:1.7;overflow-x:hidden;}
+a{text-decoration:none;}
+
+/* ── ANNOUNCEMENT BAR ── */
+.ann{background:var(--deep);text-align:center;padding:.7rem 1rem;z-index:200;position:relative;}
+.ann-t{font-family:'Inter',serif;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sand);font-weight:500;}
+.ann-t strong{color:var(--gold-lt);font-weight:600;}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.3rem 5vw;background:rgba(251,250,247,.96);border-bottom:1px solid var(--line-soft);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+.n-logo{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:500;color:var(--deep);letter-spacing:-.005em;}
+.n-logo span{color:var(--muted);font-weight:400;}
+.n-links{display:flex;gap:2.2rem;list-style:none;}
+.n-links a{font-family:'Inter',serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream2);transition:color .3s;font-weight:500;}
+.n-links a:hover{color:var(--gold);}
+.n-cta{font-family:'Inter',serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--warm-white);background:var(--deep);padding:.7rem 1.5rem;transition:background .3s;cursor:pointer;border:none;}
+.n-cta:hover{background:var(--gold-dk);}
+
+/* ── HAMBURGER ── */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.3rem;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--deep);transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mob-menu{display:none;flex-direction:column;background:var(--warm-white);border-bottom:1px solid var(--line-soft);padding:1.2rem 5vw 1.5rem;gap:.1rem;position:sticky;top:57px;z-index:99;}
+.mob-menu.open{display:flex;}
+.mob-menu a{font-family:'Inter',serif;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream2);padding:.65rem 0;border-bottom:1px solid var(--line-soft);transition:color .2s;}
+.mob-menu a:hover{color:var(--gold-dk);}
+.mob-cta{color:var(--gold-dk)!important;border-bottom:none!important;margin-top:.4rem;}
+
+/* ── SHARED SECTION ── */
+section{padding:6.5rem 5vw;}
+.stag{font-family:'Inter',serif;font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-dk);margin-bottom:.9rem;}
+.stit{font-family:'Fraunces',serif;font-size:clamp(1.8rem,3.4vw,3rem);font-weight:300;line-height:1.14;color:var(--deep);margin-bottom:1.1rem;}
+.stit em{font-style:italic;color:var(--gold-dk);}
+.ssub{font-size:.94rem;color:var(--muted);max-width:450px;font-weight:300;line-height:1.85;}
+
+/* ── STATS ── */
+.stats{background:var(--warm-white);padding:3rem 5vw;}
+.stats-in{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-soft);max-width:1000px;margin:0 auto;}
+.stat{text-align:center;padding:1.2rem 1rem;background:var(--warm-white);}
+.stat-n{font-family:'Fraunces',serif;font-size:2rem;font-weight:500;color:var(--deep);line-height:1;}
+.stat-l{font-family:'Inter',serif;font-size:.62rem;letter-spacing:.06em;color:var(--muted);margin-top:.4rem;}
+
+/* ── ABOUT ── */
+.about-sec{background:var(--warm-white);}
+.about-in{display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:start;}
+.about-p{font-size:.96rem;color:var(--cream2);font-weight:300;line-height:1.85;margin-bottom:1.1rem;}
+.about-vals{margin-top:2.2rem;display:flex;flex-direction:column;gap:1rem;}
+.about-val{display:flex;align-items:flex-start;gap:.9rem;}
+.about-val-icon{color:var(--muted);font-size:.4rem;margin-top:.5rem;flex-shrink:0;}
+.about-val strong{display:block;font-family:'Inter',serif;font-size:.72rem;color:var(--deep);margin-bottom:.15rem;font-weight:500;}
+.about-val span{font-size:.84rem;color:var(--muted);font-weight:300;}
+
+/* ── CTA BANNER ── */
+.cta-ban{background:var(--deep);padding:3.8rem 5vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;}
+.cta-t h2{font-family:'Fraunces',serif;font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:500;color:var(--warm-white);line-height:1.1;margin-bottom:.4rem;letter-spacing:-.01em;}
+.cta-t p{font-size:.9rem;color:#A8A7A0;font-weight:300;}
+.btn-dk{font-family:'Inter',serif;font-size:.72rem;color:var(--deep);background:var(--warm-white);padding:.9rem 2rem;display:inline-block;transition:all .3s;border:none;cursor:pointer;font-weight:500;}
+.btn-dk:hover{background:var(--gold-lt);}
+
+/* ── FOOTER ── */
+footer{background:var(--warm-white);border-top:1px solid var(--line);padding:4.5rem 5vw 2.2rem;}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4vw;margin-bottom:3.2rem;}
+.fl{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:500;color:var(--deep);letter-spacing:-.005em;display:block;margin-bottom:1rem;}
+.fl span{color:var(--muted);font-weight:400;}
+.foot-about{font-size:.85rem;color:var(--muted);font-weight:300;line-height:1.8;max-width:230px;margin-bottom:1.2rem;}
+.fc h4{font-family:'Inter',serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--deep);margin-bottom:1.3rem;font-weight:500;}
+.fc ul{list-style:none;}
+.fc li{margin-bottom:.6rem;}
+.fc a{font-size:.83rem;color:var(--muted);transition:color .3s;font-weight:300;}
+.fc a:hover{color:var(--deep);}
+.foot-social{display:flex;gap:1.6rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+.soc-link{font-family:'Inter',serif;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cream2);transition:color .3s;}
+.soc-link:hover{color:var(--gold-dk);}
+.fb{border-top:1px solid var(--line-soft);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.fb p{font-size:.76rem;color:var(--muted);font-weight:300;}
+.pay{display:flex;gap:.4rem;flex-wrap:wrap;}
+.py{font-family:'Inter',serif;font-size:.66rem;color:var(--muted);}
+
+/* ── STICKY CTA ── */
+.sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:500;background:var(--warm-white);border-top:1px solid var(--line);padding:.9rem 1.2rem;gap:.8rem;align-items:center;justify-content:space-between;}
+.sticky-cta-txt{font-family:'Inter',serif;font-size:.9rem;color:var(--deep);}
+.sticky-cta-txt span{color:var(--gold);font-weight:500;}
+.sticky-cta-btn{font-family:'Inter',serif;font-size:.72rem;color:var(--warm-white);background:var(--deep);padding:.75rem 1.4rem;white-space:nowrap;border:none;cursor:pointer;transition:background .3s;font-weight:500;}
+.sticky-cta-btn:hover{background:var(--gold);}
+
+/* ── PAGE HEADER (subpages) ── */
+.pg-head{background:var(--ivory);border-bottom:1px solid var(--line);padding:4.5rem 5vw 3.5rem;text-align:center;}
+.pg-head .stag{text-align:center;}
+.pg-head h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2.2rem,4.4vw,3.4rem);line-height:1.1;color:var(--deep);margin-bottom:.8rem;}
+.pg-head h1 em{font-style:italic;color:var(--gold-dk);}
+.pg-head p{color:var(--muted);font-size:.98rem;max-width:46ch;margin:0 auto;font-weight:300;}
+
+/* ── FADE IN ── */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1000px){
+  .about-in{grid-template-columns:1fr 1fr;}
+  .ft{grid-template-columns:1fr 1fr;}
+  .n-links,.n-cta{display:none;}
+  .hamburger{display:flex;}
+}
+@media(max-width:600px){
+  section{padding:3.5rem 4vw;}
+  .about-in{grid-template-columns:1fr;}
+  .ft{grid-template-columns:1fr;}
+  .cta-ban{justify-content:center;text-align:center;}
+  .stats-in{grid-template-columns:1fr 1fr;}
+  .sticky-cta{display:flex;}
+  body{padding-bottom:64px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="ann">
+  <div class="ann-t">Use <strong>SAJDA10</strong> for 10% off &middot; Worldwide shipping</div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="n-logo">Sajda<span> Studio</span></a>
+  <ul class="n-links" id="navLinks">
+    <li><a href="prayer-mats.html" onclick="closeMenu()">Prayer Mats</a></li>
+    <li><a href="sets-gifts.html" onclick="closeMenu()">Sets &amp; Gifts</a></li>
+    <li><a href="our-story.html" onclick="closeMenu()">Our Story</a></li>
+    <li><a href="help.html" onclick="closeMenu()">Help</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <button class="n-cta" onclick="window.location.href='customize.html'">Design Your Mat</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <a href="prayer-mats.html" onclick="closeMenu()">Prayer Mats</a>
+  <a href="sets-gifts.html" onclick="closeMenu()">Sets &amp; Gifts</a>
+  <a href="our-story.html" onclick="closeMenu()">Our Story</a>
+  <a href="help.html" onclick="closeMenu()">Help</a>
+  <a href="customize.html" class="mob-cta" onclick="closeMenu();">Design Your Mat</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="pg-head">
+  <div class="stag">Our Story</div>
+  <h1>Rooted in Faith.<br><em>Crafted with Care.</em></h1>
+  <p>A small Muslim-owned studio in Minneapolis, Minnesota, handcrafting prayer mats for families across the world.</p>
+</div>
+
+<!-- ABOUT -->
+<section class="about-sec" id="about">
+  <div class="about-in">
+    <div class="about-text">
+      <p class="about-p">Sajda Studio was born from a simple belief &mdash; that the space where you meet your Creator deserves more than something generic off a shelf. We are a small Muslim-owned team based in Minneapolis, Minnesota, handcrafting personalised prayer mats for families across the world.</p>
+      <p class="about-p">Every mat is made to order. Every name is embroidered by hand. Every box is packed with the intention that this gift will outlast any flower, any card, any candle &mdash; because it will be used five times a day, for years to come.</p>
+      <p class="about-p">From the first sketch to the final stitch, we think about who will kneel on this mat — a grandmother, a new revert, a child learning their first surah. That's the standard we hold every order to.</p>
+      <p class="about-p">We started with a belief that the Muslim gift market deserved better. We are still proving it, one mat at a time.</p>
+    </div>
+    <div class="about-vals">
+      <div class="about-val">
+        <div class="about-val-icon">&#9632;</div>
+        <div><strong>Muslim Owned</strong><span>Based in Minneapolis, MN</span></div>
+      </div>
+      <div class="about-val">
+        <div class="about-val-icon">&#9632;</div>
+        <div><strong>Handcrafted</strong><span>Every order made by hand</span></div>
+      </div>
+      <div class="about-val">
+        <div class="about-val-icon">&#9632;</div>
+        <div><strong>Hand-Embroidered</strong><span>Names stitched to order, never printed</span></div>
+      </div>
+      <div class="about-val">
+        <div class="about-val-icon">&#9632;</div>
+        <div><strong>Ships Worldwide</strong><span>Delivered everywhere</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-in">
+    <div class="stat"><div class="stat-n">&#11088;</div><div class="stat-l">Handcrafted to Order</div></div>
+    <div class="stat"><div class="stat-n">98%</div><div class="stat-l">Satisfaction</div></div>
+    <div class="stat"><div class="stat-n">&#127760;</div><div class="stat-l">Ships Worldwide</div></div>
+    <div class="stat"><div class="stat-n">1&ndash;2</div><div class="stat-l">Weeks to Ship</div></div>
+  </div>
+</div>
+
+<!-- CTA BANNER -->
+<div class="cta-ban">
+  <div class="cta-t">
+    <h2>Ready to design yours?</h2>
+    <p>$35 per mat &middot; Duo $60 &middot; +$7 name &middot; +$3 symbol</p>
+  </div>
+  <button class="btn-dk" onclick="window.location.href='customize.html'">Start Customizing &rarr;</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div>
+      <a href="index.html" class="fl">Sajda<span> Studio</span></a>
+      <p class="foot-about">Bespoke personalised prayer mats, handcrafted to order. Muslim-owned &middot; Minneapolis, MN &middot; Est. 2026.</p>
+    </div>
+    <div class="fc">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="prayer-mats.html">Prayer Mats</a></li>
+        <li><a href="sets-gifts.html">Duo Sets</a></li>
+        <li><a href="sets-gifts.html">Family Sets</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>Gifts For</h4>
+      <ul>
+        <li><a href="customize.html">Eid &amp; Occasions</a></li>
+        <li><a href="customize.html">Nikah</a></li>
+        <li><a href="customize.html">New Baby</a></li>
+        <li><a href="customize.html">Hajj &amp; Umrah</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="help.html#faq">FAQs</a></li>
+        <li><a href="help.html#shipping">Shipping</a></li>
+        <li><a href="help.html#contact">Contact Us</a></li>
+        <li><a href="help.html#returns">Returns</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-social">
+    <a href="https://tiktok.com/@sajdastudio" target="_blank" rel="noopener" class="soc-link">TikTok</a>
+    <a href="https://instagram.com/sajdastudio" target="_blank" rel="noopener" class="soc-link">Instagram</a>
+    <a href="mailto:sajadastudios@gmail.com" class="soc-link">Email Us</a>
+  </div>
+  <div class="fb">
+    <p>&copy; 2026 Sajda Studio. All rights reserved. Muslim-owned &middot; Minneapolis, MN</p>
+    <div class="pay">
+      <div class="py">Visa</div>
+      <div class="py">Mastercard</div>
+      <div class="py">Amex</div>
+      <div class="py">Apple Pay</div>
+      <div class="py">Google Pay</div>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY CTA (mobile) -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-txt">From <span>$35</span> &middot; Duo $60</div>
+  <button class="sticky-cta-btn" onclick="window.location.href='customize.html'">Design Your Mat &rarr;</button>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function toggleMenu() {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobMenu').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobMenu').classList.remove('open');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var href = this.getAttribute('href');
+      if (href === '#') return;
+      var target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  var fadeEls = document.querySelectorAll('.stit,.stag,.ssub,.about-p,.about-val,.stat');
+  fadeEls.forEach(function(el) { el.classList.add('fade-in'); });
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  fadeEls.forEach(function(el) { observer.observe(el); });
+
+  var hero = document.querySelector('.pg-head');
+  var sticky = document.getElementById('stickyCta');
+  var io2 = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (window.innerWidth <= 600) {
+        sticky.style.display = e.isIntersecting ? 'none' : 'flex';
+      }
+    });
+  }, { threshold: 0.1 });
+  if (hero) io2.observe(hero);
+});
+</script>
+</body>
+</html>
