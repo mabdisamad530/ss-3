@@ -886,6 +886,16 @@ function submitOrder() {
   })
   .then(function(data) {
     if (data.url) {
+      // ── Store order details for the Meta Pixel Purchase event, fired after
+      // Stripe redirects back to the success URL (see handleStripeReturn) ────
+      try {
+        localStorage.setItem('sajdaPendingPurchase', JSON.stringify({
+          value:        totalDollars,
+          currency:     'USD',
+          content_name: bundleNames[b] || b,
+          num_items:    matCounts[b] || 1
+        }));
+      } catch (e) {}
       window.location.href = data.url;
     } else {
       throw new Error(data.error || 'No checkout URL returned.');
@@ -920,6 +930,15 @@ function highlight(id) {
       document.getElementById('oFormInner').style.display = 'none';
       document.getElementById('oConfirm').style.display   = 'flex';
     });
+
+    // ── Meta Pixel Purchase event ────────────────────────────────────────
+    try {
+      var pending = localStorage.getItem('sajdaPendingPurchase');
+      if (pending && typeof fbq === 'function') {
+        fbq('track', 'Purchase', JSON.parse(pending));
+      }
+      localStorage.removeItem('sajdaPendingPurchase');
+    } catch (e) {}
   }
   if (params.get('order') === 'cancelled') {
     history.replaceState({}, '', window.location.pathname);
