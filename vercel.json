@@ -3,6 +3,7 @@
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/$1" },
     { "src": "/hero\\.mp4", "dest": "/hero.mp4" },
+    { "src": "/hero-bg\\.jpg", "dest": "/hero-bg.jpg" },
     { "src": "/mat-black\\.jpeg", "dest": "/mat-black.jpeg" },
     { "src": "/mat-grey-purple\\.jpeg", "dest": "/mat-grey-purple.jpeg" },
     { "src": "/mat-pink\\.jpeg", "dest": "/mat-pink.jpeg" },
