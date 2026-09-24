@@ -169,8 +169,10 @@ nav{
 
 /* step panels */
 .ostep{display:none;}
-.ostep.active{display:block;animation:fadeUp .35s ease both;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.ostep.active{display:block;animation:fadeUp .45s cubic-bezier(.16,1,.3,1) both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px) scale(.99);}to{opacity:1;transform:translateY(0) scale(1);}}
+@keyframes shake{10%,90%{transform:translateX(-1px);}20%,80%{transform:translateX(2px);}30%,50%,70%{transform:translateX(-4px);}40%,60%{transform:translateX(4px);}}
+.oshake{animation:shake .45s cubic-bezier(.36,.07,.19,.97) both;}
 
 .step-title{
   font-family:'Fraunces',serif;font-size:2rem;font-weight:300;
@@ -202,7 +204,7 @@ nav{
 .oinput::placeholder,.otextarea::placeholder{color:var(--muted);font-weight:300;}
 .oselect{
   cursor:pointer;
-  background-image:url("data:image/svg+xml;utf8,<svg fill='%2357564F' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-image:url("data:image/svg+xml;utf8,<svg fill='%2355504A' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
   background-repeat:no-repeat;background-position:98% 50%;padding-right:2.4rem;
 }
 .otextarea{height:80px;resize:vertical;}
@@ -258,13 +260,15 @@ nav{
 .obtn{
   font-family:'Inter',serif;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
   padding:.95rem 2rem;border:none;cursor:pointer;
-  transition:all .25s;font-weight:500;white-space:nowrap;
+  transition:background .25s ease,color .25s ease,border-color .25s ease,transform .2s ease,box-shadow .25s ease;
+  font-weight:500;white-space:nowrap;
 }
 .obtn-prev{background:transparent;color:var(--ink-soft);border:1px solid var(--line);}
 .obtn-prev:hover{border-color:var(--ink);color:var(--ink);}
 .obtn-next,.obtn-submit{background:var(--ink);color:var(--warm-white);flex:1;max-width:260px;}
-.obtn-next:hover,.obtn-submit:hover{background:var(--gold-deep);}
-.obtn-next:disabled,.obtn-submit:disabled{opacity:.45;cursor:not-allowed;}
+.obtn-next:hover,.obtn-submit:hover{background:var(--gold-deep);transform:translateY(-1px);box-shadow:0 6px 16px rgba(42,38,34,.18);}
+.obtn-next:active,.obtn-submit:active{transform:translateY(0);box-shadow:none;}
+.obtn-next:disabled,.obtn-submit:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none;}
 
 /* error */
 #oCheckoutErr{
@@ -424,23 +428,9 @@ footer{
           </select>
         </div>
 
-        <div class="ofield">
-          <label>Occasion <span class="opt">(optional)</span></label>
-          <select class="oselect" id="oOccasion">
-            <option value="">&#8212; Select occasion &#8212;</option>
-            <option>Eid Gift</option>
-            <option>Nikah / Wedding</option>
-            <option>Ramadan Gift</option>
-            <option>New Baby / Aqiqah</option>
-            <option>Hajj / Umrah</option>
-            <option>Birthday</option>
-            <option>Personal Use</option>
-          </select>
-        </div>
-
         <!-- Pricing note -->
         <div class="notice">
-          &#9632;&ensp;Single mat from <strong>$35</strong> &middot; Duo Set $60 &middot; Family Set (4) $110 &middot; +$7 name embroidery &middot; +$3 symbol &middot; +$5 tasbih add-on &middot; Free luxury gift box.
+          &#9632;&ensp;+$7 name embroidery &middot; +$3 symbol &middot; +$5 tasbih add-on &middot; Free luxury gift box with every order.
         </div>
 
         <div class="form-foot">
@@ -666,8 +656,9 @@ function nextStep() {
     if (!b) {
       var sel = document.getElementById('oBundle');
       sel.style.borderColor = 'var(--error)';
+      sel.classList.add('oshake');
       sel.focus();
-      setTimeout(function() { sel.style.borderColor = ''; }, 1800);
+      setTimeout(function() { sel.style.borderColor = ''; sel.classList.remove('oshake'); }, 1800);
       return;
     }
     updateNameFields(b);
@@ -728,7 +719,7 @@ function updateSymbolRows(bundle) {
     var label = count > 1 ? 'Mat ' + (i + 1) : 'Your mat';
     wrap.innerHTML +=
       '<div style="margin-bottom:1.1rem;">' +
-        '<div style="font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.16em;color:var(--ink-soft);text-transform:uppercase;margin-bottom:.5rem;font-weight:600;">' + label + '</div>' +
+        '<div style="font-family:\'Inter\',serif;font-size:.5rem;letter-spacing:.16em;color:var(--ink-soft);text-transform:uppercase;margin-bottom:.5rem;font-weight:600;">' + label + '</div>' +
         '<div class="symbol-opts">' +
           '<div class="sym-btn picked" data-mat="' + i + '" data-sym="none"  onclick="pickSymbol(this)"><span class="sym-icon">&mdash;</span><span class="sym-lbl">None</span></div>' +
           '<div class="sym-btn"        data-mat="' + i + '" data-sym="heart" onclick="pickSymbol(this)"><span class="sym-icon">&#9829;</span><span class="sym-lbl">Heart +$3</span></div>' +
@@ -847,7 +838,7 @@ function submitOrder() {
   var thread    = document.getElementById('oThread').value;
   var phone     = document.getElementById('oPhone').value.trim();
   var notes     = document.getElementById('oNotes').value.trim();
-  var occasion  = document.getElementById('oOccasion').value;
+  var occasion  = '';
 
   var totalDollars = calcTotal(b, allNames, allSyms);
   var totalCents   = totalDollars * 100;
@@ -908,8 +899,9 @@ function submitOrder() {
 function highlight(id) {
   var el = document.getElementById(id);
   el.style.borderColor = 'var(--error)';
+  el.classList.add('oshake');
   el.focus();
-  setTimeout(function() { el.style.borderColor = ''; }, 2000);
+  setTimeout(function() { el.style.borderColor = ''; el.classList.remove('oshake'); }, 2000);
 }
 
 // ── HANDLE STRIPE RETURN ──────────────────────────────────────────────────────
