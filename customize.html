@@ -30,7 +30,6 @@
   --line-soft:  rgba(42,38,34,.08);
   --green:      #4C7A5A;
   --error:      #c0392b;
-  --step-h:     84px; /* height of sticky step bar */
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -109,34 +108,26 @@ nav{
 .step-item.done .step-lbl{color:var(--ink);}
 .step-connector{flex:1;height:1px;background:var(--line-soft);margin:0 .8rem;}
 
-/* ── MAIN LAYOUT ── */
+/* ── MAIN LAYOUT — single flowing column ── */
 .page-body{
-  max-width:1240px;margin:0 auto;
-  display:grid;grid-template-columns:1fr 1fr;
-  min-height:calc(100vh - 200px);
+  max-width:640px;margin:0 auto;
+  padding:2.8rem 5vw 4rem;
 }
 
-/* ── LEFT PANEL — photo + colour picker ── */
-.panel-left{
-  position:sticky;top:calc(64px + var(--step-h));
-  height:calc(100vh - 64px - var(--step-h));
-  overflow:hidden;
-  background:var(--ivory);
-  border-right:1px solid var(--line);
-  display:flex;flex-direction:column;
+/* ── PHOTO CARD — product photo + colour picker, sits inline at the top ── */
+.photo-card{
+  max-width:420px;margin:0 auto 3rem;
+  background:var(--ivory);border:1px solid var(--line);
 }
 .mat-photo-wrap{
-  flex:1;overflow:hidden;position:relative;
+  height:min(50vh,440px);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;position:relative;
 }
 .mat-photo-wrap img{
-  width:100%;height:100%;object-fit:contain;
+  max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;
   transition:opacity .3s ease;
   display:block;
-}
-.mat-photo-wrap::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:120px;
-  background:linear-gradient(to top,var(--ivory),transparent);
-  pointer-events:none;
 }
 .colour-dock{
   background:var(--ivory);padding:1.4rem 1.8rem;
@@ -161,10 +152,9 @@ nav{
 .sw:hover{transform:scale(1.15);}
 .sw.on{transform:scale(1.2);border-color:var(--ink);box-shadow:0 0 0 3px rgba(42,38,34,.12);}
 
-/* ── RIGHT PANEL — the form ── */
+/* ── FORM — flows directly below the photo card ── */
 .panel-right{
   background:var(--warm-white);
-  padding:3rem 4vw 4rem;
 }
 
 /* step panels */
@@ -308,18 +298,17 @@ footer{
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
-  .page-body{grid-template-columns:1fr;}
-  .panel-left{position:static;height:auto;}
-  .mat-photo-wrap{height:52vw;min-height:240px;max-height:360px;}
   .nav-links{display:none;}
   .hamburger{display:flex;}
   .step-lbl{display:none;}
   .step-connector{margin:0 .4rem;}
-  .panel-right{padding:2rem 5vw 3rem;}
+  .page-body{padding:2.2rem 5vw 3rem;}
 }
 @media(max-width:540px){
   .orow{grid-template-columns:1fr;}
   .pg-hero{padding:2.5rem 5vw 2rem;}
+  .photo-card{max-width:280px;}
+  .mat-photo-wrap{height:min(38vh,320px);}
   .obtn{padding:.8rem 1.2rem;font-size:.52rem;}
 }
 </style>
@@ -383,11 +372,11 @@ footer{
   </div>
 </div>
 
-<!-- MAIN TWO-COLUMN LAYOUT -->
+<!-- MAIN FLOWING LAYOUT -->
 <div class="page-body">
 
-  <!-- LEFT: photo preview + colour dock -->
-  <div class="panel-left">
+  <!-- Product photo + colour dock — flows inline above the form -->
+  <div class="photo-card">
     <div class="mat-photo-wrap">
       <img id="matPhoto" src="/swatch-black.jpeg" alt="Selected prayer mat colour" />
     </div>
@@ -406,14 +395,14 @@ footer{
     </div>
   </div>
 
-  <!-- RIGHT: form -->
+  <!-- Form — flows directly below -->
   <div class="panel-right">
     <div id="oFormInner">
 
       <!-- STEP 1 -->
       <div class="ostep active" id="ostep1">
         <div class="step-title">Choose your <em>product</em></div>
-        <p class="step-sub">Select the mat bundle that fits your order, then pick your colour on the left.</p>
+        <p class="step-sub">Select the mat bundle that fits your order, then pick your colour above.</p>
 
         <div class="ofield">
           <label>Product</label>
